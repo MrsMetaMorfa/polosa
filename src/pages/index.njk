@@ -1,12 +1,214 @@
 {# ! No relative paths needed, all files inside templates/ are available ! #}
 {% extends "base.njk" %}
+{% import 'components/item.njk' as item %}
 
 {% block title %}
+
+{% endblock %}
+
+{% block header %}
+  {% include 'components/header.njk' %}
 {% endblock %}
 
 
 {% block main %}
+  <nav class="nav wrapper">
+    <a href="#" class="btn btn-default tag" id="navAll">Все новости</a>
+    <a href="#" class="btn btn-default yellow tag" id="navRedaction">Выбор редакции</a>
+    <a href="#" class="btn btn-default pink tag" id="navCorona">Коронавирус</a>
+    <a href="#" class="btn btn-default green tag" id="navEconomy">Экономика</a>
+    <a href="#" class="btn btn-default purple tag" id="navPolitics">Политика</a>
+    <a href="#" class="btn btn-default gray tag" id="navSocial">Общество</a>
+    <a href="#" class="btn btn-default blue tag" id="navTechnology">Технологии</a>
+    <a href="#" class="btn btn-default lightblue tag" id="navMonth">Итоги месяца</a>
+  </nav>
+
+  <h1 class="visually-hidden">Информационное Агенство Полоса</h1>
+
+  <section class="compilation today">
+    <div class="wrapper">
+      <div class="compilation_header container">
+        <h2 class="compilation_title">Сегодня</h2>
+        <div class="rate container">
+          <button type="button" class="btn btn-default rate_btn container" id="rateUSD" tabindex="-1">
+            <span class="rate_title">USD</span>
+            <span class="rate_now">74,39</span>
+            <span class="rate_difference">-1,38</span>
+          </button>
+          <button type="button" class="btn btn-default rate_btn container" id="rateUSD" tabindex="-1">
+            <span class="rate_title">EUR</span>
+            <span class="rate_now">81,45</span>
+            <span class="rate_difference">+2,06</span>
+          </button>
+          <button type="button" class="btn btn-default rate_btn container" id="rateUSD" tabindex="-1">
+            <span class="rate_title">Нефть</span>
+            <span class="rate_now">26,74</span>
+            <span class="rate_difference green">+9,77%</span> <!-- can be red -->
+          </button>
+        </div>
+      </div>
+      <div class="compilation_body container">
+        {{ item.item('assets/img/image 17.jpg',
+          'В России выявили более 7900 новых случаев заражения коронавирусом',
+          '29 тыс. прочтений',
+          [{color: 'yellow', title: 'Выбор редакции'},
+          {color: 'red', title: 'Важно'}])
+        }}
+        {{ item.item('assets/img/image 17 (1).jpg',
+          'У Михаила Мишустина обнаружен коронавирус',
+          '29 тыс. прочтений')
+        }}
+        {{ item.item('assets/img/image 17 (2).jpg',
+          'Европейские страны планируют ослабить ограничения из-за эпидемии',
+          '29 тыс. прочтений',
+          [{color: 'greed', title: 'Экономика'}])
+        }}
+        {{ item.item('assets/img/image 17 (3).jpg',
+          'Крупнейшие сталелитейные компании России объявили о сокращении инвестиций',
+          '29 тыс. прочтений',
+          [{color: 'red', title: 'Важно'}])
+        }}
+      </div>
+    </div>
+  </section>
+
+  <section class="compilation yesterday">
+    <div class="wrapper">
+      <div class="compilation_header container">
+        <h2 class="compilation_title">29 февраля</h2>
+      </div>
+      <div class="compilation_body container">
+        {{ item.item('assets/img/image 17.jpg',
+          'В России выявили более 7900 новых случаев заражения коронавирусом',
+          '29 тыс. прочтений',
+          [{color: 'yellow', title: 'Выбор редакции'},
+          {color: 'red', title: 'Важно'}])
+        }}
+        {{ item.item('assets/img/image 17 (1).jpg',
+          'У Михаила Мишустина обнаружен коронавирус',
+          '29 тыс. прочтений')
+        }}
+        {{ item.item('assets/img/image 17 (2).jpg',
+          'Европейские страны планируют ослабить ограничения из-за эпидемии',
+          '29 тыс. прочтений',
+          [{color: 'greed', title: 'Экономика'}])
+        }}
+        {{ item.item('assets/img/image 17 (3).jpg',
+          'Крупнейшие сталелитейные компании России объявили о сокращении инвестиций',
+          '29 тыс. прочтений',
+          [{color: 'red', title: 'Важно'}])
+        }}
+      </div>
+    </div>
+  </section>
+
+  <section class="compilation editors-choice">
+    <div class="wrapper">
+      <div class="compilation_header container">
+        <h2 class="compilation_title">Выбор редакции</h2>
+        <a href="" class="btn btn-default editors-choice_all">Показать всё</a>
+      </div>
+      <div class="compilation_body container">
+        {{ item.item('assets/img/image 17.jpg',
+          'В России выявили более 7900 новых случаев заражения коронавирусом',
+          '29 тыс. прочтений',
+          [{color: 'red', title: 'Важно'}])
+        }}
+        {{ item.item('assets/img/image 17 (1).jpg',
+          'У Михаила Мишустина обнаружен коронавирус',
+          '29 тыс. прочтений')
+        }}
+        {{ item.item('assets/img/image 17 (2).jpg',
+          'Европейские страны планируют ослабить ограничения из-за эпидемии',
+          '29 тыс. прочтений',
+          [{color: 'greed', title: 'Экономика'}])
+        }}
+        {{ item.item('assets/img/image 17 (3).jpg',
+          'Крупнейшие сталелитейные компании России объявили о сокращении инвестиций',
+          '29 тыс. прочтений',
+          [{color: 'red', title: 'Важно'}])
+        }}
+      </div>
+    </div>
+  </section>
+
+  <section class="compilation day">
+    <div class="wrapper">
+      <div class="compilation_header container">
+        <h2 class="compilation_title">28 февраля</h2>
+      </div>
+      <div class="compilation_body container">
+        {{ item.item('assets/img/image 17.jpg',
+          'В России выявили более 7900 новых случаев заражения коронавирусом',
+          '29 тыс. прочтений',
+          [{color: 'yellow', title: 'Выбор редакции'},
+            {color: 'red', title: 'Важно'}])
+        }}
+        {{ item.item('assets/img/image 17 (1).jpg',
+          'У Михаила Мишустина обнаружен коронавирус',
+          '29 тыс. прочтений')
+        }}
+        {{ item.item('assets/img/image 17 (2).jpg',
+          'Европейские страны планируют ослабить ограничения из-за эпидемии',
+          '29 тыс. прочтений',
+          [{color: 'greed', title: 'Экономика'}])
+        }}
+        {{ item.item('assets/img/image 17 (3).jpg',
+          'Крупнейшие сталелитейные компании России объявили о сокращении инвестиций',
+          '29 тыс. прочтений',
+          [{color: 'red', title: 'Важно'}])
+        }}
+      </div>
+    </div>
+  </section>
+
+  <section class="compilation day">
+    <div class="wrapper">
+      <div class="compilation_header container">
+        <h2 class="compilation_title">27 февраля</h2>
+      </div>
+      <div class="compilation_body container">
+        {{ item.item('assets/img/image 17.jpg',
+          'В России выявили более 7900 новых случаев заражения коронавирусом',
+          '29 тыс. прочтений',
+          [{color: 'yellow', title: 'Выбор редакции'},
+            {color: 'red', title: 'Важно'}])
+        }}
+        {{ item.item('assets/img/image 17 (1).jpg',
+          'У Михаила Мишустина обнаружен коронавирус',
+          '29 тыс. прочтений')
+        }}
+        {{ item.item('assets/img/image 17 (2).jpg',
+          'Европейские страны планируют ослабить ограничения из-за эпидемии',
+          '29 тыс. прочтений',
+          [{color: 'greed', title: 'Экономика'}])
+        }}
+        {{ item.item('assets/img/image 17 (3).jpg',
+          'Крупнейшие сталелитейные компании России объявили о сокращении инвестиций',
+          '29 тыс. прочтений',
+          [{color: 'red', title: 'Важно'}])
+        }}
+      </div>
+    </div>
+  </section>
+
+  <section class="more container">
+    <p class="more_empty" style="display: none;">Извините, больше новостей нет</p>
+    <!-- onclick can be deleted or modified -->
+    <button class="btn btn-default" type="button" id="loadMore"
+            onclick="setTimeout( () => {
+                console.log(this.parentNode.querySelector('p'));
+              this.parentNode.querySelector('p').style.display = 'block';
+              this.style.display = 'none';
+            }, 1000)"
+    >Загрузить ещё</button>
+  </section>
 
 {% endblock %}
+
+{% block footer %}
+  {% include "components/footer.njk" %}
+{% endblock %}
+
 
 {# include other blocks as necessary #}

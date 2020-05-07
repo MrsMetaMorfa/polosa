@@ -61,7 +61,7 @@ const paths = {
   },
   // images are in build/assets/img/*
   img: {
-    src: srcBase + "img/**/*.{png,gif,jpg,bmp,tiff,jpeg,webp}",
+    src: srcBase + "img/**/*.{png,gif,jpg,bmp,tiff,jpeg,webp,svg}",
     dest: destBase + "assets/img/"
   },
   // other files are copied recursively to build/assets/

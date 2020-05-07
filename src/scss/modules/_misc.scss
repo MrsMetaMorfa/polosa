@@ -1,17 +1,17 @@
-$select-bg: transparentize(lighten($color-primary, 10), 0.5);
+$select-bg: transparentize(lighten($color-yellow, 10), 0.5);
 
 ::selection{
   background: $select-bg;
-  color: #fff;
+  color: inherit;
   text-shadow: none;
 }
 ::-moz-selection{
   background: $select-bg;
-  color: #fff;
+  color: inherit;
   text-shadow: none;
 }
 ::-webkit-selection{
   background: $select-bg;
-  color: #fff;
+  color: inherit;
   text-shadow: none;
 }

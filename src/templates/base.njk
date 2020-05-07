@@ -10,6 +10,7 @@
   <link href="//www.google-analytics.com" rel="dns-prefetch">
   <link href="//ajax.googleapis.com" rel="dns-prefetch">
 
+  <link href="https://fonts.googleapis.com/css2?family=PT+Sans:ital,wght@0,400;0,700;1,400;1,700&display=swap" rel="stylesheet">
   <link href="assets/css/style.min.css" rel="stylesheet">
 
   {% block headAfter %}
@@ -18,31 +19,21 @@
 {# The whole body block can be overriden if needed #}
 {% block body %}
   <body>
-
-  <header class="header" role="banner">
     {% block header %}
     {% endblock %}
-  </header>
 
-  <main class="main" role="main">
-    {% block main %}
-    {% endblock %}
-  </main>
+    <main class="main" role="main">
+      {% block main %}
+      {% endblock %}
+    </main>
 
-  <aside class="sidebar" role="complementary">
-    {% block sidebar %}
-    {% endblock %}
-  </aside>
-
-  <footer class="footer" role="contentinfo">
     {% block footer %}
     {% endblock %}
-  </footer>
 
-  {% include "partials/scripts.njk" %}
+    {% include "partials/scripts.njk" %}
 
-  {% block end %}
-  {% endblock %}
+    {% block end %}
+    {% endblock %}
 
   </body>
 {% endblock %}
