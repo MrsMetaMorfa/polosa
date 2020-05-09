@@ -14,13 +14,13 @@
 {% block main %}
   <nav class="nav wrapper">
     <a href="inner.html" class="btn btn-default tag" id="navAll">Все новости</a>
-    <a href="inner.html" class="btn btn-default yellow color-dark tag" id="navRedaction">Выбор редакции</a>
-    <a href="inner.html" class="btn btn-default pink color-dark tag" id="navCorona">Коронавирус</a>
-    <a href="inner.html" class="btn btn-default green color-white tag" id="navEconomy">Экономика</a>
-    <a href="inner.html" class="btn btn-default purple color-white tag" id="navPolitics">Политика</a>
-    <a href="inner.html" class="btn btn-default gray color-white tag" id="navSocial">Общество</a>
-    <a href="inner.html" class="btn btn-default blue color-white tag" id="navTechnology">Технологии</a>
-    <a href="inner.html" class="btn btn-default lightblue color-white tag" id="navMonth">Итоги месяца</a>
+    <a href="inner.html" class="btn btn-default tag" id="navRedaction">Выбор редакции</a>
+    <a href="inner.html" class="btn btn-default tag" id="navCorona">Коронавирус</a>
+    <a href="inner.html" class="btn btn-default tag" id="navEconomy">Экономика</a>
+    <a href="inner.html" class="btn btn-default tag" id="navPolitics">Политика</a>
+    <a href="inner.html" class="btn btn-default tag" id="navSocial">Общество</a>
+    <a href="index.html" class="btn btn-default blue color-white tag current" id="navTechnology">Технологии </a>
+    <a href="inner.html" class="btn btn-default tag" id="navMonth">Итоги месяца</a>
   </nav>
 
   <h1 class="visually-hidden">Информационное Агенство Полоса</h1>
@@ -29,23 +29,6 @@
     <div class="wrapper">
       <div class="compilation_header container">
         <h2 class="compilation_title">Сегодня</h2>
-        <div class="rate container">
-          <button type="button" class="btn btn-default btn-square rate_btn container" id="rateUSD" tabindex="-1">
-            <span class="rate_title">USD</span>
-            <span class="rate_now">74,39</span>
-            <span class="rate_difference">-1,38</span>
-          </button>
-          <button type="button" class="btn btn-default btn-square rate_btn container" id="rateUSD" tabindex="-1">
-            <span class="rate_title">EUR</span>
-            <span class="rate_now">81,45</span>
-            <span class="rate_difference">+2,06</span>
-          </button>
-          <button type="button" class="btn btn-default btn-square rate_btn container" id="rateUSD" tabindex="-1">
-            <span class="rate_title">Нефть</span>
-            <span class="rate_now">26,74</span>
-            <span class="rate_difference green">+9,77%</span> <!-- can be red -->
-          </button>
-        </div>
       </div>
       <div class="compilation_body container">
         {{ item.item('assets/img/image 17.jpg',
@@ -105,36 +88,6 @@
         }}
         {{ item.item('assets/img/image 17 (3).jpg',
           'Крупнейшие сталелитейные компании России объявили о сокращении инвестиций',
-          '29 тыс. прочтений',
-          [{color: 'red', whiteText: true, darkText: false, title: 'Важно'}])
-        }}
-        {{ item.item('assets/img/image 17 (1).jpg',
-          'У Михаила Мишустина обнаружен коронавирус',
-          '29 тыс. прочтений')
-        }}
-        {{ item.item('assets/img/image 17 (2).jpg',
-          'Европейские страны планируют ослабить ограничения из-за эпидемии',
-          '29 тыс. прочтений',
-          [{color: 'green', whiteText: true, darkText: false, title: 'Экономика'}])
-        }}
-        {{ item.item('assets/img/image 17 (3).jpg',
-          'Крупнейшие сталелитейные компании России объявили о сокращении инвестиций',
-          '29 тыс. прочтений',
-          [{color: 'red', whiteText: true, darkText: false, title: 'Важно'}])
-        }}
-      </div>
-    </div>
-  </section>
-
-  <section class="compilation compilation--colored yellow color-dark">
-    <div class="wrapper">
-      <div class="compilation_header container">
-        <h2 class="compilation_title">Выбор редакции</h2>
-        <a href="" class="btn btn-default btn-square see_all"><span>Показать всё</span></a>
-      </div>
-      <div class="compilation_body container">
-        {{ item.item('assets/img/image 17.jpg',
-          'В России выявили более 7900 новых случаев заражения коронавирусом',
           '29 тыс. прочтений',
           [{color: 'red', whiteText: true, darkText: false, title: 'Важно'}])
         }}

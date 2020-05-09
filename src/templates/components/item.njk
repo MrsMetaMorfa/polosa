@@ -6,13 +6,16 @@
     {% if tags %}
       <div class="item_tags container">
         {% for tag in tags %}
-          <button type="button" class="btn btn-default tag {{ tag.color }} {{ 'color-white' if tag.whiteText }} {{ 'color-dark' if tag.darkText }}" id="">
-            <span>{{ tag.title }}</span></button>
+          <button type="button"
+                  class="btn btn-default tag {{ tag.color }} {{ 'color-white' if tag.whiteText }} {{ 'color-dark' if tag.darkText }}"
+                  id="">
+            {{ tag.title }}
+          </button>
         {% endfor %}
       </div>
     {% endif %}
     <h3 class="item_title">
-      <a href="article.html" class="btn"><span>{{ title }}</span></a>
+      <a href="article.html" class="btn">{{ title }}</a>
     </h3>
     <p class="item_data">{{ views }}</p>
   </div>
