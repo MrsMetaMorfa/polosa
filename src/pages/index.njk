@@ -14,13 +14,13 @@
 {% block main %}
   <nav class="nav wrapper">
     <a href="index.html" class="btn btn-default tag" id="navAll">Все новости</a>
-    <a href="inner.html" class="btn btn-default yellow color-dark tag" id="navRedaction">Выбор редакции</a>
-    <a href="inner.html" class="btn btn-default pink color-dark tag" id="navCorona">Коронавирус</a>
-    <a href="inner.html" class="btn btn-default green color-white tag" id="navEconomy">Экономика</a>
-    <a href="inner.html" class="btn btn-default purple color-white tag" id="navPolitics">Политика</a>
-    <a href="inner.html" class="btn btn-default gray color-white tag" id="navSocial">Общество</a>
-    <a href="inner.html" class="btn btn-default blue color-white tag" id="navTechnology">Технологии</a>
-    <a href="inner.html" class="btn btn-default lightblue color-white tag" id="navMonth">Итоги месяца</a>
+    <a href="inner.html" class="btn btn-default tag" id="navRedaction">Выбор редакции</a>
+    <a href="inner.html" class="btn btn-default tag" id="navCorona">Коронавирус</a>
+    <a href="inner.html" class="btn btn-default tag" id="navEconomy">Экономика</a>
+    <a href="inner.html" class="btn btn-default tag" id="navPolitics">Политика</a>
+    <a href="inner.html" class="btn btn-default tag" id="navSocial">Общество</a>
+    <a href="inner.html" class="btn btn-default tag" id="navTechnology">Технологии</a>
+    <a href="inner.html" class="btn btn-default tag" id="navMonth">Итоги месяца</a>
   </nav>
 
   <h1 class="visually-hidden">Информационное Агенство Полоса</h1>
@@ -30,20 +30,13 @@
       <div class="compilation_header container">
         <h2 class="compilation_title">Сегодня</h2>
         <div class="rate container">
-          <button type="button" class="btn btn-default btn-square rate_btn container" id="rateUSD" tabindex="-1">
-            <span class="rate_title">USD</span>
-            <span class="rate_now">74,39</span>
-            <span class="rate_difference">-1,38</span>
+          <button type="button" class="btn btn-default rate_btn disable container" id="rateUSD" tabindex="-1">
+            <span class="rate_title">$</span>
+            <span class="rate_now green">74,39</span>
           </button>
-          <button type="button" class="btn btn-default btn-square rate_btn container" id="rateUSD" tabindex="-1">
-            <span class="rate_title">EUR</span>
-            <span class="rate_now">81,45</span>
-            <span class="rate_difference">+2,06</span>
-          </button>
-          <button type="button" class="btn btn-default btn-square rate_btn container" id="rateUSD" tabindex="-1">
-            <span class="rate_title">Нефть</span>
-            <span class="rate_now">26,74</span>
-            <span class="rate_difference green">+9,77%</span> <!-- can be red -->
+          <button type="button" class="btn btn-default rate_btn disable container" id="rateEUR" tabindex="-1">
+            <span class="rate_title">€</span>
+            <span class="rate_now red">81,45</span>
           </button>
         </div>
       </div>

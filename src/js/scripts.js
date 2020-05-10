@@ -65,6 +65,52 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.removeChild(dummy);
       });
     }
+
+    function ToggleBlock(block, button) {
+      let ToggleMenu = function() {
+        block.classList.toggle('open');
+      };
+      button.onclick = () => (new ToggleMenu());
+    }
+
+    if (document.querySelector('.header_top')) {
+      const menuWrapper = document.querySelector('.header_menu'),
+            menu = menuWrapper.querySelector('.menu'),
+            menuButton = menuWrapper.querySelector('.btn-icon');
+      new ToggleBlock(menu, menuButton);
+      const languageWrapper = document.querySelector('.header_language'),
+            language = languageWrapper.querySelector('.language'),
+            languageButton = languageWrapper.querySelector('.btn-icon');
+      new ToggleBlock(language, languageButton);
+      const notificationWrapper = document.querySelector('.header_notification'),
+            notification = notificationWrapper.querySelector('.notification'),
+            notificationButton = notificationWrapper.querySelector('.btn-icon');
+      new ToggleBlock(notification, notificationButton);
+
+      document.onclick = (e) => {
+        let target = e.target,
+          itsMenu = target == menu || menu.contains(target),
+          itsMenuButton = target == menuButton,
+          menuIsActive = menu.classList.contains('open'),
+          itsLanguage = target == language || language.contains(target),
+          itsLanguageButton = target == languageButton,
+          languageIsActive = language.classList.contains('open'),
+          itsNotification = target == notification || notification.contains(target),
+          itsNotificationButton = target == notificationButton,
+          notificationIsActive = notification.classList.contains('open');
+
+        if (!itsMenu && !itsMenuButton && menuIsActive) {
+          menu.classList.toggle('open');
+        }
+        if (!itsLanguage && !itsLanguageButton && languageIsActive) {
+          language.classList.toggle('open');
+        }
+        if (!itsNotification && !itsNotificationButton && notificationIsActive) {
+          notification.classList.toggle('open');
+        }
+      };
+
+    }
   }
 
   new StartScripts();

@@ -52,12 +52,36 @@ body {
         filter: invert(1);
       }
     }
+    .header {
+      .menu, .language, .notification {
+        background: $color-gray1;
+        color: $color-white;
+        &_item {
+          &:not(:last-child) {
+            border-bottom-color: $color-gray2;
+          }
+        }
+        &_link {
+          &:hover, &:focus {
+            background: rgba(0, 0, 0, 0.1);
+          }
+        }
+      }
+    }
     .header, .main .nav, .compilation:not(:last-child) .compilation_body, .article_content, .article_socials, .compilation .item {
       border-bottom-color: $color-gray1;
     }
     .btn-default {
       background: $color-gray1;
       color: $color-white;
+    }
+    .btn-icon {
+      img {
+        filter: invert(1);
+      }
+      &:hover, &:focus {
+        background: $color-gray1;
+      }
     }
     .compilation--colored {
       color: $color-black;
@@ -94,13 +118,44 @@ body {
         }
       }
     }
+    .tag {
+      background: transparent;
+      &:before {
+        background: rgba(255,255,255,.1);
+      }
+    }
+    .compilation {
+      .rate_btn {
+        background: transparent;
+        border-color: $color-gray1;
+      }
+    }
   }
   &.light {
     background: $color-white;
     color: $color-black;
+    .btn-icon img {
+      filter: invert(0);
+    }
     .header_logo {
       img {
         filter: invert(0);
+      }
+    }
+    .header {
+      .menu, .language, .notification {
+        background: $color-white;
+        color: $color-black;
+        &_item {
+          &:not(:last-child) {
+            border-bottom-color: $color-gray5;
+          }
+        }
+        &_link {
+          &:hover, &:focus {
+            background: rgba(0, 0, 0, 0.04);
+          }
+        }
       }
     }
     .header, .main .nav, .compilation:not(:last-child) .compilation_body, .article_content, .article_socials, .compilation .item {
@@ -109,6 +164,11 @@ body {
     .btn-default {
       background: $color-gray6;
       color: $color-gray1;
+    }
+    .btn-icon {
+      &:hover, &:focus {
+        background: $color-gray6;
+      }
     }
     .compilation--colored {
       color: $color-black;
@@ -144,6 +204,18 @@ body {
             filter: invert(0);
           }
         }
+      }
+    }
+    .tag {
+      background: transparent;
+      &:before {
+        background: rgba(0,0,0,.1);
+      }
+    }
+    .compilation {
+      .rate_btn {
+        background: transparent;
+        border-color: $color-gray5;
       }
     }
   }
@@ -274,6 +346,17 @@ a {
   &-square {
     border-radius: 8px;
   }
+  &-icon {
+    display: block;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    padding: 8px;
+    background: transparent;
+    &:hover, &:focus {
+      background: $color-gray6;
+    }
+  }
 }
 .container {
   display: flex;
@@ -292,12 +375,17 @@ a {
 }
 
 .header {
+  position: relative;
   justify-content: center;
   align-items: center;
-  padding: 24px;
+  padding: 8px 0 16px;
   border-bottom: 1px solid $color-gray5;
   &_logo {
-    height: 48px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    height: 40px;
     transition: opacity .3s ease-in-out;
     img {
       height: 100%;
@@ -305,6 +393,90 @@ a {
     &:hover, &:focus {
       opacity: .8;
       transition: opacity .3s ease-in-out;
+    }
+  }
+  &_top, &_bottom {
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+  }
+  &_bottom {
+    opacity: .5;
+    margin-top: 30px;
+    p {
+      margin: 0;
+      padding-top: 8px;
+      font-size: 14px;
+      line-height: 18px;
+    }
+  }
+  &_language, &_menu, &_notification {
+    position: relative;
+    ul {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+    }
+  }
+  &_language, &_notification {
+    .btn-icon {
+      margin-left: 8px;
+    }
+  }
+  .menu, .language, .notification {
+    position: absolute;
+    z-index: 100;
+    top: calc(100% + 4px);
+    background: $color-white;
+    color: $color-black;
+    border-radius: 8px;
+    overflow: hidden;
+    width: 240px;
+    height: auto;
+    font-size: 16px;
+    line-height: 22px;
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
+    display: none;
+    &_item {
+      width: 100%;
+      &:not(:last-child) {
+        border-bottom: 1px solid $color-gray5;
+      }
+    }
+    &_link {
+      display: block;
+      width: 100%;
+      padding: 13px 16px;
+      text-align: left;
+      &:hover, &:focus {
+        background: rgba(0, 0, 0, 0.04);
+      }
+    }
+    &.open {
+      display: block;
+    }
+  }
+  .language, .notification {
+    right: 0;
+  }
+  .menu {
+    left: 0;
+  }
+  .notification {
+    &_empty {
+      padding: 16px;
+      opacity: .5;
+      text-align: center;
+      margin-bottom: 0;
+      font-size: 14px;
+      line-height: 18px;
+    }
+    &_list {
+      display: none;
+    }
+    &_item {
+      padding: 13px 16px;
     }
   }
 }
@@ -329,7 +501,7 @@ a {
 .main {
   .nav {
     flex-direction: row;
-    padding: 16px 0 4px;
+    padding: 12px 0 0;
     border-bottom: 1px solid $color-gray5;
     align-items: center;
     justify-content: center;
@@ -342,6 +514,7 @@ a {
     white-space: nowrap;
     padding: 5px 16px;
     line-height: 22px;
+    background: transparent;
     &.current {
       position: relative;
       display: flex;
@@ -359,6 +532,9 @@ a {
 }
 .compilation {
   padding: 72px 0 0;
+  &:first-of-type {
+    padding-top: 56px;
+  }
   &_header {
     justify-content: space-between;
     align-items: center;
@@ -374,19 +550,28 @@ a {
     &_btn {
       margin-left: 12px;
       line-height: 22px;
+      font-size: 16px;
+      padding: 4px 15px;
+      background: transparent;
+      border: 1px solid $color-gray6;
+      height: 32px;
+      &.disable {
+        cursor: default;
+        &:before {
+          display: none;
+        }
+      }
       span {
         display: inline-block;
       }
     }
     &_now {
       margin-left: 8px;
-    }
-    &_difference {
-      margin-left: 8px;
-      opacity: .5;
       &.green {
         color: $color-green;
-        opacity: 1;
+      }
+      &.red {
+        color: $color-red;
       }
     }
   }
@@ -560,12 +745,13 @@ a {
   }
   .header {
     justify-content: space-between;
-    padding-left: 0;
-    padding-right: 0;
+    padding: 24px 0;
     border-bottom-color: transparent!important;
     &_logo {
       opacity: .25;
       margin-left: 0!important;
+      position: static;
+      transform: none;
     }
     .btn {
       margin-left: 12px;
@@ -659,6 +845,26 @@ a {
     }
   }
 }
+.info {
+  padding: 56px 0;
+  &_title {
+    width: 100%;
+    max-width: 640px;
+    margin: 0 0 24px;
+    font-size: 32px;
+    line-height: 41px;
+    font-weight: 400;
+  }
+  &_body {
+    width: 100%;
+    max-width: 640px;
+    p {
+      font-size: 20px;
+      line-height: 28px;
+      margin: 0 0 28px;
+    }
+  }
+}
 
 @media screen and (max-width: 1200px) and (orientation: landscape) {
   .article_content--inner {
@@ -718,6 +924,12 @@ a {
     &_title {
       padding-top: 16px;
     }
+    .header {
+      padding: 16px 0;
+      &_logo {
+        height: 32px;
+      }
+    }
   }
   .wrapper {
     width: 100%;
@@ -727,6 +939,11 @@ a {
     width: calc(100% - 32px);
     &_logo {
       height: 32px;
+      position: static;
+      transform: none;
+    }
+    &_top, &_bottom {
+      display: none;
     }
   }
   .compilation {
@@ -932,12 +1149,41 @@ a {
         filter: invert(1);
       }
     }
+    .header {
+      .menu, .language, .notification {
+        background: $color-gray1;
+        color: $color-white;
+        &_item {
+          &:not(:last-child) {
+            border-bottom-color: $color-gray2;
+          }
+        }
+        &_link {
+          &:hover, &:focus {
+            background: rgba(0, 0, 0, 0.1);
+          }
+        }
+      }
+    }
     .header, .main .nav, .compilation:not(:last-child) .compilation_body, .article_content, .article_socials, .compilation .item {
       border-bottom-color: $color-gray1;
     }
     .btn-default {
       background: $color-gray1;
       color: $color-white;
+    }
+    .btn-icon {
+      img {
+        filter: invert(1);
+      }
+      &:hover, &:focus {
+        background: $color-gray1;
+      }
+    }
+    .compilation {
+      .rate_btn {
+        border-color: $color-gray1;
+      }
     }
     .compilation--colored {
       color: $color-black;
@@ -975,6 +1221,11 @@ a {
             filter: invert(0.92);
           }
         }
+      }
+    }
+    .tag {
+      &:before {
+        background: rgba(255,255,255,.1);
       }
     }
   }

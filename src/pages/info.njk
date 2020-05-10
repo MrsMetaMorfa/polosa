@@ -1,0 +1,51 @@
+{# ! No relative paths needed, all files inside templates/ are available ! #}
+{% extends "base.njk" %}
+{% import 'components/item.njk' as item %}
+
+{% block title %}
+
+{% endblock %}
+
+{% block header %}
+  {% include 'components/header.njk' %}
+{% endblock %}
+
+
+{% block main %}
+  <section class="info wrapper">
+    <h1 class="info_title">Контакты</h1>
+    <div class="info_body">
+      <p>
+        E-mail:<br/>
+        info@prostoprosport.ru
+      </p>
+      <p>
+        Адрес:<br/>
+        140180 Московская обл., г. Жуковский, ул. Гагарина, д. 85В, пом. 8
+      </p>
+      <p>
+        По вопросам сотрудничества:<br/>
+        marketing@prostoprosport.ru
+      </p>
+      <p>
+        Наименование издания: PROSTOPROSPORT (ПРОСТОПРОСПОРТ)
+      </p>
+      <p>
+        Учредитель: ООО «ХЕШТЕГ» ОГРН 1185027009727
+      </p>
+      <p>
+        Свидетельство о регистрации СМИ ЭЛ № ФС 77 - 74032 от 19.10.2018 выдано Федеральной службой по надзору в сфере связи, информационных технологий и массовых коммуникаций.
+      </p>
+      <p>
+        ©2020 - ProstoProSport. Все права защищены и охраняются законом. 18+
+      </p>
+    </div>
+  </section>
+{% endblock %}
+
+{% block footer %}
+{#  {% include "components/footer.njk" %}#}
+{% endblock %}
+
+
+{# include other blocks as necessary #}
