@@ -291,7 +291,7 @@ a {
       content: '';
       display: block;
       position: absolute;
-      background: rgba(0,0,0,.5);
+      background: rgba(0,0,0,.05);
       top: 0;
       bottom: 0;
       left: 0;
@@ -950,6 +950,9 @@ a {
     padding: 24px 0 0;
     width: calc(100% - 32px);
     margin: 0 auto;
+    &:first-of-type {
+      padding-top: 24px;
+    }
     &:not(:last-child) {
       border-bottom: none;
     }
