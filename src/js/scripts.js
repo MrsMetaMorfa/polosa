@@ -1,24 +1,41 @@
 // Аналог $(document).ready()
 document.addEventListener('DOMContentLoaded', function() {
+  const tagsListDefault = document.querySelectorAll('.main .nav .tag');
+  let tagsWidthListDefault = [], currentTag, currentTagIndex;
+  if (document.querySelector('.main .nav')) {
+    Array.prototype.forEach.call(tagsListDefault, function(elem) {
+      tagsWidthListDefault.push( elem.offsetWidth + 12 );
+    });
+    currentTag = document.querySelector('.main .nav .tag.current');
+    currentTagIndex = function() {
+      if (currentTag !== null) {
+        return Array.prototype.slice.call(tagsListDefault).indexOf(currentTag);
+      }
+    };
+  }
+
   function StartScripts() {
 
     if (document.querySelector('.compilation')) {
-      let itemsOnPage = document.querySelectorAll('.item'), itemWidth, imageHeight;
+      let itemsOnPage = document.querySelectorAll('.item'), itemWidth, imageHeight, itemTags;
       if ((window.innerWidth <= 1024) && (window.innerWidth < window.innerHeight)) { //portrait
         itemWidth = itemsOnPage[0].querySelector('.item_image').offsetWidth;
         imageHeight = (itemWidth) / 141 * 212;
         Array.prototype.forEach.call(itemsOnPage, function(elem){
-          console.log(elem);
           let image = elem.querySelector('.item_image');
           image.style.height = imageHeight + 'px';
         });
       } else {
         itemWidth = itemsOnPage[0].offsetWidth;
         imageHeight = (itemWidth) / 141 * 212;
+        if (itemsOnPage[0].classList.contains('wide')) {
+          imageHeight = (itemWidth) / 151 * 106;
+        }
         Array.prototype.forEach.call(itemsOnPage, function(elem){
-          console.log(elem);
           let image = elem.querySelector('.item_image');
+          itemTags = elem.querySelector('.item_tags');
           image.style.height = imageHeight + 'px';
+          itemTags.style.top = imageHeight + 'px';
         });
       }
     }
@@ -31,7 +48,6 @@ document.addEventListener('DOMContentLoaded', function() {
         articleImage.style.height = 'inherit';
         imageWidth = articleImage.offsetWidth;
         imageHeight = articleImage.offsetHeight;
-        console.log(imageHeight, imageWidth);
         articleImage.nextElementSibling.style.paddingLeft = 0;
         articleImage.style.height = imageHeight + 'px';
         articleImage.nextElementSibling.querySelector('.header').style.marginBottom = imageHeight + 'px';
@@ -73,7 +89,61 @@ document.addEventListener('DOMContentLoaded', function() {
       button.onclick = () => (new ToggleMenu());
     }
 
-    if (document.querySelector('.header_top')) {
+    if (document.querySelector('.main .nav')) {
+      console.log(currentTagIndex());
+      let tagNav = document.querySelector('.main .nav'),
+          tagMoreList = document.querySelector('.main .nav .tag_list'),
+          tagMoreButton = document.querySelector('.main .nav .tag-wrapper'),
+          i = 0,
+          tagNavWidth = tagNav.offsetWidth,
+          tagMoreButtonWidth = tagMoreButton.offsetWidth,
+          tagsVisibleWidth = 0,
+          tagsList = Array.prototype.slice.call(tagsListDefault),
+          tagsWidthList = tagsWidthListDefault;
+      function FindTagsVisibleWidth(index) {
+        tagsVisibleWidth = 0;
+        if (document.querySelector('.main .nav .tag.current')) {
+          while ((tagsVisibleWidth <= (tagNavWidth - tagMoreButtonWidth - 6 - 26)) && (index < tagsList.length)) {
+            tagsVisibleWidth = tagsVisibleWidth + tagsWidthList[index];
+            index++;
+          }
+        } else {
+          while ((tagsVisibleWidth <= (tagNavWidth - tagMoreButtonWidth - 6)) && (index < tagsList.length)) {
+            tagsVisibleWidth = tagsVisibleWidth + tagsWidthList[index];
+            index++;
+          }
+        }
+        return index;
+      }
+      i = FindTagsVisibleWidth(i);
+      let allNavTags = document.querySelectorAll('.main .nav .tag');
+
+      if (currentTag) {
+        i = i - 1;
+        if (currentTagIndex() > i) {
+          let currentTagWidth = tagsWidthList[currentTagIndex()];
+          tagsList.splice(currentTagIndex(), 1);
+          tagsWidthList.splice(currentTagIndex(), 1);
+          let k = i - 1;
+          tagsList.splice(k, 0, currentTag);
+          tagsWidthList.splice(k, 0, currentTagWidth);
+        }
+        i = 0;
+        i = FindTagsVisibleWidth(i);
+      }
+      i = i - 1;
+      Array.prototype.forEach.call(allNavTags, function (elem) {
+        elem.remove();
+      });
+      for (let b = 0; b < i; b++) {
+        tagMoreButton.before(tagsList[b]);
+      }
+      for (let l = i; l < tagsList.length; l++) {
+        tagMoreList.append(tagsList[l]);
+      }
+    }
+
+    if (document.querySelector('.header_top') || document.querySelector('.main .nav')) {
       const menuWrapper = document.querySelector('.header_menu'),
             menu = menuWrapper.querySelector('.menu'),
             menuButton = menuWrapper.querySelector('.btn-icon');
@@ -86,6 +156,10 @@ document.addEventListener('DOMContentLoaded', function() {
             notification = notificationWrapper.querySelector('.notification'),
             notificationButton = notificationWrapper.querySelector('.btn-icon');
       new ToggleBlock(notification, notificationButton);
+      const navWrapper = document.querySelector('.main .nav .tag-wrapper'),
+        navList = navWrapper.querySelector('.tag_list'),
+        navButton = navWrapper.querySelector('.tag-button');
+      new ToggleBlock(navList, navButton);
 
       document.onclick = (e) => {
         let target = e.target,
@@ -97,7 +171,10 @@ document.addEventListener('DOMContentLoaded', function() {
           languageIsActive = language.classList.contains('open'),
           itsNotification = target == notification || notification.contains(target),
           itsNotificationButton = target == notificationButton,
-          notificationIsActive = notification.classList.contains('open');
+          notificationIsActive = notification.classList.contains('open'),
+          itsList = target == navList || navList.contains(target),
+          itsListButton = target == navButton,
+          listIsActive = navList.classList.contains('open');
 
         if (!itsMenu && !itsMenuButton && menuIsActive) {
           menu.classList.toggle('open');
@@ -107,6 +184,9 @@ document.addEventListener('DOMContentLoaded', function() {
         }
         if (!itsNotification && !itsNotificationButton && notificationIsActive) {
           notification.classList.toggle('open');
+        }
+        if (!itsList && !itsListButton && listIsActive) {
+          navList.classList.toggle('open');
         }
       };
 

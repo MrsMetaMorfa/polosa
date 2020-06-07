@@ -21,22 +21,20 @@
   <body>
   <!-- For dark theme add class 'dark' for body.  -->
   <!-- For light theme add class 'light' for body.  -->
-    {% block header %}
-    {% endblock %}
-
-    <main class="main" role="main">
-      {% block main %}
+    <div class="wrapper">
+      {% block header %}
       {% endblock %}
-    </main>
 
-    {% block footer %}
-    {% endblock %}
+      <main class="main" role="main">
+        {% block main %}
+        {% endblock %}
+      </main>
 
+      {% block footer %}
+        {% include 'components/footer.njk' %}
+      {% endblock %}
+    </div>
     {% include "partials/scripts.njk" %}
-
-    {% block end %}
-    {% endblock %}
-
   </body>
 {% endblock %}
 </html>
