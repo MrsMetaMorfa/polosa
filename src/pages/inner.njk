@@ -6,85 +6,67 @@
 
 {% endblock %}
 
-{% block header %}
-  {% include 'components/header.njk' %}
+{% block banners %}
 {% endblock %}
 
+{% block header %}
+  {% include 'components/headerInner.njk' %}
+{% endblock %}
 
 {% block main %}
-  <nav class="nav container">
-    <!-- All tags in main list. div.tag_list must be empty, this functional is client side -->
-    <a href="index.html" class="btn btn-default tag" id="navAll">Все новости</a>
-    <a href="inner.html" class="btn btn-default tag" id="navImportant">Важно</a>
-    <a href="inner.html" class="btn btn-default tag" id="navCorona">Коронавирус</a>
-    <a href="inner.html" class="btn btn-default tag" id="navPolitics">Политика</a>
-    <a href="inner.html" class="btn btn-default tag" id="navFinance">Финансы</a>
-    <a href="inner.html" class="btn btn-default tag" id="navInternet">Интернет</a>
-    <a href="inner.html" class="btn btn-default tag" id="navWorld">В мире</a>
-    <a href="inner.html" class="btn btn-default tag" id="navSport">Спорт</a>
-    <a href="inner.html" class="btn btn-default tag" id="navAuto">Авто</a>
-    <a href="inner.html" class="btn btn-default tag" id="navSociety">Общество</a>
-    <a href="inner.html" class="btn btn-default tag" id="navTranslation">Трансляция</a>
-    <a href="inner.html" class="btn btn-default tag" id="navNature">Природа</a>
-    <a href="inner.html" class="btn btn-default tag" id="navInterview">Интервью</a>
-    <a href="inner.html" class="btn btn-default blue color-white tag current" id="navOfftop">Оффтоп</a>
-
-    <div class="tag-wrapper">
-      <button type="button" class="btn btn-default tag-button" id="showMore">Ещё <img src="assets/img/arrow-down.svg" alt=""></button>
-      <div class="tag_list"></div>
-    </div>
-  </nav>
-
   <h1 class="visually-hidden">Информационное Агенство Полоса</h1>
 
   <section class="compilation today">
-    <div class="compilation_header">
-      <h2 class="compilation_title">Оффтоп</h2>
-    </div>
-    <div class="compilation_body container">
-      {{ item.item('assets/img/image 17.jpg',
-        'В России выявили более 7900 новых случаев заражения коронавирусом',
-        '29 тыс. прочтений',
-        [{color: 'yellow', darkText: true, title: 'Выбор редакции'},
-          {color: 'red', whiteText: true, title: 'Важно'}], true)
-      }}
-      {{ item.item('assets/img/image 17 (1).jpg',
-        'У Михаила Мишустина обнаружен коронавирус',
-        '29 тыс. прочтений')
-      }}
-      {{ item.item('assets/img/image 17 (2).jpg',
-        'Европейские страны планируют ослабить ограничения из-за эпидемии',
-        '29 тыс. прочтений',
-        [{color: 'green', whiteText: true, title: 'Экономика'},
-          {color: 'red', whiteText: true, title: 'Важно'},
-          {color: 'blue', whiteText: true, title: 'Мир'},
-          {color: 'blue', whiteText: true, title: 'Политика'},
-          {color: 'yellow', whiteText: true, title: 'Коронавирус'}])
-      }}
-      {{ item.item('assets/img/image 17 (3).jpg',
-        'Крупнейшие сталелитейные компании России объявили о сокращении инвестиций',
-        '29 тыс. прочтений',
-        [{color: 'red', whiteText: true, title: 'Важно'}])
-      }}
-      {{ item.item('assets/img/image 17 (2).jpg',
-        'Европейские страны планируют ослабить ограничения из-за эпидемии',
-        '29 тыс. прочтений',
-        [{color: 'green', whiteText: true, title: 'Экономика'}])
-      }}
-      {{ item.item('assets/img/image 17 (3).jpg',
-        'Крупнейшие сталелитейные компании России объявили о сокращении инвестиций',
-        '29 тыс. прочтений',
-        [{color: 'red', whiteText: true, title: 'Важно'}], true)
-      }}
+    <div class="wrapper">
+      <div class="compilation_header">
+        <h2 class="compilation_title">Оффтоп</h2>
+      </div>
+      <div class="compilation_body container">
+        {{ item.item('assets/img/image 17.jpg',
+          'В России выявили более 7900 новых случаев заражения коронавирусом',
+          '29 тыс. прочтений',
+          [{color: 'yellow', darkText: true, title: 'Выбор редакции'},
+            {color: 'red', whiteText: true, title: 'Важно'}], true)
+        }}
+        {{ item.item('assets/img/image 17 (1).jpg',
+          'У Михаила Мишустина обнаружен коронавирус',
+          '29 тыс. прочтений')
+        }}
+        {{ item.item('assets/img/image 17 (2).jpg',
+          'Европейские страны планируют ослабить ограничения из-за эпидемии',
+          '29 тыс. прочтений',
+          [{color: 'green', whiteText: true, title: 'Экономика'},
+            {color: 'red', whiteText: true, title: 'Важно'},
+            {color: 'blue', whiteText: true, title: 'Мир'},
+            {color: 'blue', whiteText: true, title: 'Политика'},
+            {color: 'yellow', whiteText: true, title: 'Коронавирус'}])
+        }}
+        {{ item.item('assets/img/image 17 (3).jpg',
+          'Крупнейшие сталелитейные компании России объявили о сокращении инвестиций',
+          '29 тыс. прочтений',
+          [{color: 'red', whiteText: true, title: 'Важно'}])
+        }}
+        {{ item.item('assets/img/image 17 (2).jpg',
+          'Европейские страны планируют ослабить ограничения из-за эпидемии',
+          '29 тыс. прочтений',
+          [{color: 'green', whiteText: true, title: 'Экономика'}])
+        }}
+        {{ item.item('assets/img/image 17 (3).jpg',
+          'Крупнейшие сталелитейные компании России объявили о сокращении инвестиций',
+          '29 тыс. прочтений',
+          [{color: 'red', whiteText: true, title: 'Важно'}], true)
+        }}
+      </div>
     </div>
   </section>
 
   <section class="compilation yesterday">
-    <div class="compilation_header">
+    <div class="wrapper">
+      <div class="compilation_header">
       <h2 class="compilation_title">29 февраля</h2>
       <p class="compilation_subtitle">Вчера</p>
     </div>
-    <div class="compilation_body container">
+      <div class="compilation_body container">
       {{ item.item('assets/img/image 17.jpg',
         'В России выявили более 7900 новых случаев заражения коронавирусом',
         '29 тыс. прочтений',
@@ -121,14 +103,16 @@
         [{color: 'red', whiteText: true, darkText: false, title: 'Важно'}])
       }}
     </div>
+    </div>
   </section>
 
   <section class="compilation day">
-    <div class="compilation_header">
+    <div class="wrapper">
+      <div class="compilation_header">
       <h2 class="compilation_title">28 февраля</h2>
       <p class="compilation_subtitle">Позавчера</p>
     </div>
-    <div class="compilation_body container">
+      <div class="compilation_body container">
       {{ item.item('assets/img/image 17.jpg',
         'В России выявили более 7900 новых случаев заражения коронавирусом',
         '29 тыс. прочтений',
@@ -149,15 +133,17 @@
         '29 тыс. прочтений',
         [{color: 'red', whiteText: true, darkText: false, title: 'Важно'}])
       }}
+    </div>
     </div>
   </section>
 
   <section class="compilation day">
-    <div class="compilation_header">
+    <div class="wrapper">
+      <div class="compilation_header">
       <h2 class="compilation_title">27 февраля</h2>
       <p class="compilation_subtitle">3 дня назад</p>
     </div>
-    <div class="compilation_body container">
+      <div class="compilation_body container">
       {{ item.item('assets/img/image 17.jpg',
         'В России выявили более 7900 новых случаев заражения коронавирусом',
         '29 тыс. прочтений',
@@ -178,19 +164,22 @@
         '29 тыс. прочтений',
         [{color: 'red', whiteText: true, darkText: false, title: 'Важно'}])
       }}
+    </div>
     </div>
   </section>
 
   <section class="more container">
-    <p class="more_empty" style="display: none;">Извините, больше новостей нет</p>
-    <!-- onclick can be deleted or modified -->
-    <button class="btn btn-default btn-square" type="button" id="loadMore"
-            onclick="setTimeout( () => {
-                console.log(this.parentNode.querySelector('p'));
-              this.parentNode.querySelector('p').style.display = 'block';
-              this.style.display = 'none';
-            }, 1000)"
-    ><span>Загрузить ещё</span></button>
+    <div class="wrapper">
+      <p class="more_empty" style="display: none;">Извините, больше новостей нет</p>
+      <!-- onclick can be deleted or modified -->
+      <button class="btn btn-default btn-square" type="button" id="loadMore"
+              onclick="setTimeout( () => {
+                  console.log(this.parentNode.querySelector('p'));
+                this.parentNode.querySelector('p').style.display = 'block';
+                this.style.display = 'none';
+              }, 1000)"
+      ><span>Загрузить ещё</span></button>
+    </div>
   </section>
 
 {% endblock %}
@@ -198,5 +187,6 @@
 {% block footer %}
   {% include "components/footer.njk" %}
 {% endblock %}
+
 
 {# include other blocks as necessary #}

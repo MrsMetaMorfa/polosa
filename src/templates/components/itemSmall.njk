@@ -1,0 +1,17 @@
+{% macro itemSmall(image, title, isRenew, views) %}
+  <div class="item container">
+    <a href="article.html" class="btn item_image">
+      <img src="{{ image }}" alt="{{ title }}">
+    </a>
+    <div class="item_body">
+      <h3 class="item_title">
+        <a href="article.html" class="btn">{{ title }}</a>
+      </h3>
+      {% if isRenew %}
+        <p class="item_data"><span>{{ views }}</span></p>
+      {% else %}
+        <p class="item_data"><mark>Новость дополняется</mark> <span>·</span> <span>Обновлено 3 часа назад</span></p>
+      {% endif %}
+    </div>
+  </div>
+{% endmacro %}

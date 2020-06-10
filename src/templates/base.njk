@@ -21,7 +21,10 @@
   <body>
   <!-- For dark theme add class 'dark' for body.  -->
   <!-- For light theme add class 'light' for body.  -->
-    <div class="wrapper">
+  <div class="content">
+    {% block banners %}
+    {% endblock %}
+    <div class="content-wrapper">
       {% block header %}
       {% endblock %}
 
@@ -34,7 +37,9 @@
         {% include 'components/footer.njk' %}
       {% endblock %}
     </div>
-    {% include "partials/scripts.njk" %}
+  </div>
+
+  {% include "partials/scripts.njk" %}
   </body>
 {% endblock %}
 </html>
