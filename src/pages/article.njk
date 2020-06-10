@@ -1,5 +1,6 @@
 {# ! No relative paths needed, all files inside templates/ are available ! #}
 {% extends "base.njk" %}
+{% import 'components/item.njk' as item %}
 
 {% block title %}
 
@@ -7,6 +8,7 @@
 
 
 {% block header %}
+  {% include '../templates/components/articleHeader.njk' %}
 {% endblock %}
 
 {% block main %}
@@ -16,49 +18,91 @@
         <img src="assets/img/Group 27.jpg" alt="Владимир Гердо / ТАСС / Scanpix / LETA">
       </picture>
       <!-- figcaption can contain class 'dark' for black text -->
-      <figcaption class="article_image-caption">Владимир Гердо / ТАСС / Scanpix / LETA</figcaption>
+      <figcaption class="article_image-caption">
+        <p>Владимир Гердо / ТАСС / Scanpix / LETA</p>
+        <p>Владимир Гердо / ТАСС / Scanpix / LETA</p>
+        <p>Владимир Гердо / ТАСС / Scanpix / LETA</p>
+        <p>Владимир Гердо / ТАСС / Scanpix / LETA</p>
+      </figcaption>
     </figure>
 
     <article class="article_body">
-      {% include '../templates/components/articleHeader.njk' %}
       <h1 class="article_title">Российские фотографы запустили онлайн-аукцион, прибыль от которого пойдет на защитные средства для врачей</h1>
       <p class="article_info-top container">
-        <a href="#" class="btn btn-default purple color-white tag" id="">Истории</a>
-        <span class="article_views">22 322 прочтений</span>
+        <a href="#" class="btn btn-default btn-square blue color-white" id="">Прослушать новость</a>
+        <a href="#" class="btn btn-default btn-square" id="">Поделиться</a>
       </p>
       <div class="article_content">
         <div class="article_content--inner">
           <p>Академия «Фотографика» вместе с фондом «Живой» и проектом EverydayRussia запустила благотворительный онлайн-аукцион в поддержку российских врачей, который продлится до 10 мая. Вырученные деньги пойдут на закупку средств индивидуальной защиты (респираторы, маски, комбинезоны и т. д.). В аукционе участвуют 138 фотографов — «Медуза» публикует 14 представленных работ с комментариями авторов. Купить фотографии можно
             <a href="">здесь</a>.</p>
           <h2>Сергей Пономарев. «The Shard»</h2>
+          <blockquote class="blockquote container">
+            <div class="blockquote_image">
+              <img src="assets/img/Rectangle 14 (2).jpg" alt="">
+            </div>
+            <div class="blockquote_body">
+              <header>
+                <cite>Иван Рудской</cite>
+                <p>Блогер</p>
+              </header>
+              <p>Понимаете, то, что Гордон хочет взять у меня интервью — такая же глупость, как если бы Штрейхер позвонил Левитану во время Великой Отечественной войны и попытался взять.</p>
+              <footer>Сообщил нашему изданию блогер</footer>
+            </div>
+          </blockquote>
           <figure>
-            <img src="assets/img/Rectangle 14.jpg" alt="">
-            <figcaption>Владимир Гердо / ТАСС / Scanpix / LETA</figcaption>
+            <picture>
+              <img src="assets/img/Rectangle 14.jpg" alt="">
+            </picture>
+            <figcaption>
+              <p>Владимир Гердо / ТАСС / Scanpix / LETA</p>
+              <p>Владимир Гердо / ТАСС / Scanpix / LETA</p>
+            </figcaption>
           </figure>
           <p>Эта картинка из большой серии фотографий о Лондоне, которую я снимал в 2017 году для New York Times. История была посвящена городу, который является мультинациональным бурлящим котлом, похожим скорее на Нью-Йорк или Милан и очень сильно отличающимся от остальных британских городов.</p>
           <p>Я снимал эту историю около месяца и оказывался в совершенно разных ситуациях: документировал жизнь миллиардера и совершенно бедных людей, был в мечети, которая до этого была синагогой, а еще раньше была церковью. Я пытался показать атмосферу города, который после «Брекзита», наверное, будет увядать и станет обыкновенной столицей, а не центром бизнеса и мультикультурности.</p>
           <p>Эта фотография снята с Шарда — одного из самых высоких зданий Европы. Когда я там был, вдруг заметил, что люди, находящиеся на противоположной стороне смотровой площадки, начинают отражаться в стекле. Мне показалось, что это такая метафора небесного офиса и призрачности существования Лондона, который находится на границе между успешным прошлым и совершенно непонятным, достаточно темным будущим.</p>
-          <p class="article_info-bottom container">
-            <span class="article_data">5 мая 2020</span>
-            <span class="divider">·</span>
-            <span class="article_source">Источник: <a href="#">РИА Новости</a></span>
-          </p>
-        </div>
-      </div>
-      <div class="article_socials">
-        <h2 class="socials_title">Поделиться</h2>
-        <div class="socials_list container">
-          <button class="btn btn-default btn-square fb color-white" type="button" onclick="">Facebook</button>
-          <button class="btn btn-default btn-square tw color-white" type="button" onclick="">Twitter</button>
-          <button class="btn btn-default btn-square vk color-white" type="button" onclick="">ВКонтакте</button>
-          <button class="btn btn-default btn-square copy" type="button" id="copyLink">Скопировать ссылку</button>
         </div>
       </div>
     </article>
   </section>
+
+  <section class="banner">
+    <div class="banner_block" style="width: 861px; height: 104px;"></div>
+  </section>
+
+  <section class="compilation day">
+    <div class="compilation_header">
+      <h2 class="compilation_title">Похожие новости</h2>
+    </div>
+    <div class="compilation_body container">
+      {{ item.item('assets/img/image 17.jpg',
+        'В России выявили более 7900 новых случаев заражения коронавирусом',
+        '29 тыс. прочтений',
+        [{color: 'yellow', darkText: true, whiteText: false, title: 'Выбор редакции'},
+          {color: 'red', whiteText: true, darkText: false, title: 'Важно'}])
+      }}
+      {{ item.item('assets/img/image 17 (1).jpg',
+        'У Михаила Мишустина обнаружен коронавирус',
+        '29 тыс. прочтений')
+      }}
+      {{ item.item('assets/img/image 17 (2).jpg',
+        'Европейские страны планируют ослабить ограничения из-за эпидемии',
+        '29 тыс. прочтений',
+        [{color: 'green', whiteText: true, darkText: false, title: 'Экономика'}])
+      }}
+      {{ item.item('assets/img/image 17 (3).jpg',
+        'Крупнейшие сталелитейные компании России объявили о сокращении инвестиций',
+        '29 тыс. прочтений',
+        [{color: 'red', whiteText: true, darkText: false, title: 'Важно'}])
+      }}
+    </div>
+  </section>
+
 {% endblock %}
 
 {% block footer %}
+  {% include 'components/footer.njk' %}
 {% endblock %}
 
 {# include other blocks as necessary #}

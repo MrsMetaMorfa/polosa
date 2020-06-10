@@ -496,6 +496,18 @@ a {
       padding: 13px 16px;
     }
   }
+  &--article {
+    padding: 20px 0;
+    justify-content: space-between;
+    .header_logo {
+      position: static;
+      top: auto;
+      left: auto;
+      transform: none;
+      height: 32px;
+      margin-right: 16px;
+    }
+  }
 }
 .footer {
   padding: 40px 0;
@@ -784,21 +796,23 @@ a {
 
 .article {
   position: relative;
-  height: 100vh;
   width: 100%;
   margin: 0 auto;
+  padding: 40px 0 40px calc(100% / 3);
+  display: flex;
+  border-bottom: 1px solid $color-gray5;
   &_image {
     position: absolute;
-    top: 0;
+    top: 40px;
     left: 0;
-    bottom: 0;
     overflow: hidden;
     margin: 0;
-    width: calc(100vh / 212 * 141);
-    background: $color-gray6;
+    width: calc(100% / 3);
+    height: auto;
     &-picture {
       width: 100%;
       height: 100%;
+      background: $color-gray6;
       img {
         height: 100%;
         width: 100%;
@@ -806,56 +820,40 @@ a {
       }
     }
     &-caption {
-      position: absolute;
-      z-index: 10;
-      bottom: 0;
-      left: 0;
-      width: 100%;
       color: $color-white;
-      padding: 24px;
-      opacity: .5;
       &.dark {
         color: $color-black;
+      }
+      p {
+        border-bottom: 1px solid $color-gray5;
+        padding: 13px 0;
+        margin: 0;
+        font-size: 16px;
+        line-height: 21px;
+        opacity: .5;
       }
     }
   }
   &_body {
-    position: absolute;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    overflow: auto;
-    left: 0;
-    padding: 0 64px 50px calc(100vh / 212 * 141 + 64px);
-  }
-  .header {
-    justify-content: space-between;
-    padding: 24px 0;
-    border-bottom-color: transparent!important;
-    &_logo {
-      opacity: .25;
-      margin-left: 0!important;
-      position: static;
-      transform: none;
-    }
-    .btn {
-      margin-left: 12px;
-    }
+    padding: 0;
+    width: calc((100% / 3) * 2);
+    max-width: 640px;
+    margin: 0 auto;
   }
   &_title {
     font-size: 32px;
     margin-bottom: 24px;
-    padding-top: 56px;
-    max-width: 840px;
     line-height: 41px;
   }
   &_info {
     &-top {
-      margin-bottom: 24px;
+      margin-bottom: 16px;
       flex-wrap: wrap;
-      .tag {
-        margin-right: 8px;
+      .btn {
         margin-bottom: 8px;
+        &:not(:last-child) {
+          margin-right: 8px;
+        }
       }
     }
     &-bottom {
@@ -884,8 +882,9 @@ a {
     margin-bottom: 40px;
     border-bottom: 1px solid $color-gray5;
     p {
-      line-height: 1.4;
       font-size: 20px;
+      line-height: 26px;
+      margin-bottom: 0 0 24px;
     }
     h2, h3, h4, h5, h6 {
       padding: 24px 0;
@@ -896,20 +895,68 @@ a {
       line-height: 31px;
     }
     figure {
-      margin: 0 0 40px;
+      margin: 0 0 24px;
       width: 100%;
-      img {
+      picture {
         width: 100%;
         background: $color-gray6;
+        img {
+          margin: 0 auto;
+          height: 100%;
+          width: auto;
+        }
       }
       figcaption {
-        opacity: .45;
-        margin-top: 8px;
+        p {
+          border-bottom: 1px solid $color-gray5;
+          padding: 13px 0;
+          margin: 0;
+          font-size: 16px;
+          line-height: 21px;
+          opacity: .5;
+        }
       }
     }
-    &--inner {
-      width: 85%;
-      max-width: 720px;
+    .blockquote {
+      margin: 0 0 24px;
+      padding: 24px 0;
+      border: solid $color-gray5;
+      border-width: 1px 0 1px 0;
+      &_image {
+        align-self: flex-start;
+        width: 56px;
+        min-width: 56px;
+        height: 56px;
+        border-radius: 50%;
+        margin: 0 16px 0 0;
+        overflow: hidden;
+        img {
+          height: 100%;
+          width: auto;
+        }
+      }
+      &_body {
+        font-size: 20px;
+        line-height: 26px;
+        p {
+          margin-bottom: 16px;
+        }
+        header {
+          cite {
+            color: $color-darkblue;
+            font-style: normal;
+            display: block;
+            margin-bottom: 2px;
+          }
+          p {
+            opacity: .5;
+            margin-bottom: 16px;
+          }
+        }
+        footer {
+          opacity: .5;
+        }
+      }
     }
   }
   &_socials {
@@ -928,6 +975,14 @@ a {
         }
       }
     }
+  }
+}
+.banner {
+  padding: 40px 0;
+  border-bottom: 1px solid $color-gray5;
+  &_block {
+    background: $color-gray3;
+    margin: 0 auto;
   }
 }
 .info {
@@ -951,11 +1006,6 @@ a {
   }
 }
 
-@media screen and (max-width: 1200px) and (orientation: landscape) {
-  .article_content--inner {
-    width: 100%;
-  }
-}
 @media screen and (max-width: 1024px) and (orientation: landscape) {
   .compilation_header {
     flex-wrap: wrap;
@@ -1283,7 +1333,9 @@ a {
     }
     .article {
       &_image {
-        background: $color-gray1;
+        &-picture {
+          background: $color-gray1;
+        }
       }
       &_content {
         figure {
