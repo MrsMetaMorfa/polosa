@@ -553,6 +553,9 @@ a {
         font-size: 0;
         line-height: 0;
       }
+      .arrow {
+        display: none;
+      }
     }
   }
 }
@@ -1169,6 +1172,9 @@ a {
   .wrapper {
     padding: 0 16px;
   }
+  .more {
+    padding: 24px 16px;
+  }
   .article {
     &_image {
       position: absolute;
@@ -1196,11 +1202,62 @@ a {
   }
   .header {
     padding: 16px 0;
+    margin: 0 16px;
+    width: calc(100% - 32px);
     &_logo {
       height: 24px;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
     }
-    &_bottom, &_language {
+    &_functional {
+      margin-left: 0;
+      width: 100%;
+      justify-content: space-between;
+      .header_menu {
+        .menu {
+          right: auto;
+          left: 0;
+        }
+      }
+    }
+    &_language {
       display: none;
+    }
+    width: 100%;
+    justify-content: center;
+    padding: 24px 16px;
+    .wrapper {
+      padding: 0;
+    }
+    &--article {
+      padding: 24px 0;
+      width: calc(100% - 32px);
+      .wrapper {
+        padding: 0;
+      }
+      .header_logo {
+        opacity: 1;
+        margin: 0 auto;
+        height: 24px;
+      }
+      .header_close {
+        position: absolute;
+        margin: 0;
+        top: 50%;
+        left: 0;
+        padding: 12px;
+        transform: translateY(-50%);
+
+        svg {
+          display: none;
+
+          &.arrow {
+            display: block;
+          }
+        }
+      }
     }
   }
   .compilation {
@@ -1219,8 +1276,6 @@ a {
     }
     &_header {
       margin-bottom: 24px;
-      flex-direction: column;
-      align-items: flex-start;
       padding-left: 0;
       padding-right: 0;
       .btn {
@@ -1235,6 +1290,7 @@ a {
       padding-bottom: 0;
       width: 100%;
       margin: 0;
+      display: block;
     }
     .item {
       width: 100%;
@@ -1246,6 +1302,10 @@ a {
       margin: 0 0 24px;
       &.wide {
         width: 100%;
+        .item_title {
+          font-size: 18px;
+          line-height: 23px;
+        }
       }
       &_image {
         width: 48px;
@@ -1282,9 +1342,12 @@ a {
     }
   }
   .footer {
-    margin: 0 auto;
+    margin: 0 16px;
     padding: 24px 0 72px;
-    flex-direction: column-reverse;
+    .wrapper {
+      flex-direction: column-reverse;
+      padding: 0;
+    }
     &_info, &_nav {
       width: 100%;
       font-size: 16px;
@@ -1305,36 +1368,36 @@ a {
   }
   .article {
     padding: 0 16px;
-    .header {
-      width: 100%;
-      justify-content: center;
-      &_logo {
-        opacity: 1;
-      }
-      &_close {
-        display: none;
-      }
+    margin-top: -1px;
+    border-bottom: none;
+    .wrapper {
+      padding: 0;
     }
     &_body {
-      padding: 0 0 24px;
       overflow-x: hidden;
     }
     &_image {
-      top: 64px;
+      position: static!important;
+      width: calc(100% + 32px)!important;
+      margin: 0 -16px;
+      &-picture {
+        height: 264px!important;
+      }
       &-caption {
-        font-size: 16px;
-        padding: 16px;
+        padding: 9px 16px 17px;
+        font-size: 14px;
+        line-height: 18px;
       }
     }
     &_title {
-      font-size: 24px;
-      line-height: 31px;
-      margin-bottom: 8px;
+      margin-bottom: 16px;
+      font-weight: bold;
+      font-size: 22px;
+      line-height: 28px;
     }
     &_info {
       &-top {
-        margin-bottom: 24px;
-
+        margin-bottom: 16px;
       }
       &-bottom {
         font-size: 16px!important;
@@ -1357,7 +1420,7 @@ a {
       }
       p {
         font-size: 18px;
-        line-height: 25px;
+        line-height: 23px;
       }
       h2, h3, h4, h5, h6 {
         padding: 16px 0;
@@ -1368,8 +1431,13 @@ a {
       }
       figure {
         margin-bottom: 32px;
+        picture {
+          width: calc(100% + 32px);
+          margin: 0 -16px;
+        }
         figcaption {
-          font-size: 16px;
+          font-size: 14px;
+          line-height: 18px;
         }
       }
     }
@@ -1393,10 +1461,31 @@ a {
       }
     }
   }
-  .rate, .nav, .item_tags {
-    display: none;
+  .item {
+    &_title, &_subtitle {
+      font-size: 18px;
+      line-height: 23px;
+    }
+    &.wide {
+      .item_title, &_subtitle {
+        font-size: 18px;
+        line-height: 23px;
+      }
+    }
   }
-  .article_info-top .tag {
+  .banners {
+    + .content-wrapper {
+      padding-right: 0;
+    }
+  }
+  .blockquote {
+    &_image {
+      width: 48px;
+      min-width: 48px;
+      height: 48px;
+    }
+  }
+  .rate, .nav, .item_tags, .article_info-top .tag, .last, .banners, .article_translation .translation_renew {
     display: none;
   }
 }
