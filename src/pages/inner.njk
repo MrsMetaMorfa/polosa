@@ -18,7 +18,7 @@
 
   <section class="compilation today">
     <div class="wrapper">
-      <div class="compilation_header">
+      <div class="compilation_header container">
         <h2 class="compilation_title">Оффтоп</h2>
       </div>
       <div class="compilation_body container">
@@ -62,7 +62,7 @@
 
   <section class="compilation yesterday">
     <div class="wrapper">
-      <div class="compilation_header">
+      <div class="compilation_header container">
       <h2 class="compilation_title">29 февраля</h2>
       <p class="compilation_subtitle">Вчера</p>
     </div>
@@ -108,7 +108,7 @@
 
   <section class="compilation day">
     <div class="wrapper">
-      <div class="compilation_header">
+      <div class="compilation_header container">
       <h2 class="compilation_title">28 февраля</h2>
       <p class="compilation_subtitle">Позавчера</p>
     </div>
@@ -139,7 +139,7 @@
 
   <section class="compilation day">
     <div class="wrapper">
-      <div class="compilation_header">
+      <div class="compilation_header container">
       <h2 class="compilation_title">27 февраля</h2>
       <p class="compilation_subtitle">3 дня назад</p>
     </div>
@@ -168,18 +168,16 @@
     </div>
   </section>
 
-  <section class="more container">
-    <div class="wrapper">
-      <p class="more_empty" style="display: none;">Извините, больше новостей нет</p>
-      <!-- onclick can be deleted or modified -->
-      <button class="btn btn-default btn-square" type="button" id="loadMore"
-              onclick="setTimeout( () => {
-                  console.log(this.parentNode.querySelector('p'));
-                this.parentNode.querySelector('p').style.display = 'block';
-                this.style.display = 'none';
-              }, 1000)"
-      ><span>Загрузить ещё</span></button>
-    </div>
+  <section class="more container wrapper">
+    <p class="more_empty" style="display: none;">Извините, больше новостей нет</p>
+    <!-- onclick can be deleted or modified -->
+    <button class="btn btn-default btn-square" type="button" id="loadMore"
+            onclick="setTimeout( () => {
+                console.log(this.parentNode.querySelector('p'));
+              this.parentNode.querySelector('p').style.display = 'block';
+              this.style.display = 'none';
+            }, 1000)"
+    ><span>Загрузить ещё</span></button>
   </section>
 
 {% endblock %}

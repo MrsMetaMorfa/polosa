@@ -8,14 +8,21 @@
 
 {% block banners %}
   <aside class="banners">
-    <div class="banners_item">
-      <img src="assets/img/banner01.jpg" alt="">
-    </div>
-    <div class="banners_item">
-      <img src="assets/img/banner02.jpg" alt="">
-    </div>
-    <div class="banners_item">
-      <img src="assets/img/banner03.jpg" alt="">
+    <div class="banners_wrapper">
+      <div class="banners_container">
+        <div class="banners_item">
+          <img src="assets/img/banner01.jpg" alt="">
+        </div>
+        <div class="banners_item">
+          <img src="assets/img/banner02.jpg" alt="">
+        </div>
+        <div class="banners_item">
+          <img src="assets/img/banner03.jpg" alt="">
+        </div>
+        <div class="banners_item">
+          <img src="assets/img/banner02.jpg" alt="">
+        </div>
+      </div>
     </div>
   </aside>
 {% endblock %}
@@ -84,7 +91,7 @@
                 <span>Трансляция мнений</span>
               </h2>
               <p class="translation_renew">Обновлено только что</p>
-              <div class="line" style="animation-duration: 5s; animation-iteration-count: infinite;"></div>
+              <div class="line animated" style="animation-duration: 5s;"></div>
             </div>
             <div class="translation_body">
               <blockquote class="blockquote container">
@@ -138,12 +145,6 @@
             </div>
           </div>
       </article>
-    </div>
-  </section>
-
-  <section class="banner">
-    <div class="wrapper">
-      <div class="banner_block" style="width: 861px; height: 104px;"></div>
     </div>
   </section>
 
