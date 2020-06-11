@@ -1,69 +1,67 @@
-<header class="header" role="banner">
-  <div class="wrapper container">
-    <a href="index.html" class="btn header_logo">
-      <img src="assets/img/logo.svg" alt="Polosa Media Logo" />
-    </a>
-    <nav class="header_tags nav container">
-      <!-- All tags in main list. div.tag_list must be empty, this functional is client side -->
-      <a href="index.html" class="btn btn-default tag" id="navAll">Все новости</a>
-      <a href="inner.html" class="btn btn-default tag" id="navImportant">Важно</a>
-      <a href="inner.html" class="btn btn-default tag" id="navCorona">Коронавирус</a>
-      <a href="inner.html" class="btn btn-default tag" id="navPolitics">Политика</a>
-      <a href="inner.html" class="btn btn-default tag" id="navFinance">Финансы</a>
-      <a href="inner.html" class="btn btn-default tag" id="navInternet">Интернет</a>
-      <a href="inner.html" class="btn btn-default tag" id="navWorld">В мире</a>
-      <a href="inner.html" class="btn btn-default tag" id="navSport">Спорт</a>
-      <a href="inner.html" class="btn btn-default tag" id="navAuto">Авто</a>
-      <a href="inner.html" class="btn btn-default tag" id="navSociety">Общество</a>
-      <a href="inner.html" class="btn btn-default tag" id="navTranslation">Трансляция</a>
-      <a href="inner.html" class="btn btn-default tag" id="navNature">Природа</a>
-      <a href="inner.html" class="btn btn-default tag" id="navInterview">Интервью</a>
-      <a href="inner.html" class="btn btn-default tag blue color-white current" id="navOfftop">Оффтоп</a>
+<header class="header wrapper container" role="banner">
+  <a href="index.html" class="btn header_logo">
+    <img src="assets/img/logo.svg" alt="Polosa Media Logo" />
+  </a>
+  <nav class="header_tags nav container">
+    <!-- All tags in main list. div.tag_list must be empty, this functional is client side -->
+    <a href="index.html" class="btn btn-default tag" id="navAll">Все новости</a>
+    <a href="inner.html" class="btn btn-default tag" id="navImportant">Важно</a>
+    <a href="inner.html" class="btn btn-default tag" id="navCorona">Коронавирус</a>
+    <a href="inner.html" class="btn btn-default tag" id="navPolitics">Политика</a>
+    <a href="inner.html" class="btn btn-default tag" id="navFinance">Финансы</a>
+    <a href="inner.html" class="btn btn-default tag" id="navInternet">Интернет</a>
+    <a href="inner.html" class="btn btn-default tag" id="navWorld">В мире</a>
+    <a href="inner.html" class="btn btn-default tag" id="navSport">Спорт</a>
+    <a href="inner.html" class="btn btn-default tag" id="navAuto">Авто</a>
+    <a href="inner.html" class="btn btn-default tag" id="navSociety">Общество</a>
+    <a href="inner.html" class="btn btn-default tag" id="navTranslation">Трансляция</a>
+    <a href="inner.html" class="btn btn-default tag" id="navNature">Природа</a>
+    <a href="inner.html" class="btn btn-default tag" id="navInterview">Интервью</a>
+    <a href="inner.html" class="btn btn-default tag blue color-white current" id="navOfftop">Оффтоп</a>
 
-      <div class="tag-wrapper">
-        <button type="button" class="btn btn-default tag-button" id="showMore">Ещё <img src="assets/img/arrow-down.svg" alt=""></button>
-        <div class="tag_list"></div>
-      </div>
+    <div class="tag-wrapper">
+      <button type="button" class="btn btn-default tag-button" id="showMore">Ещё <img src="assets/img/arrow-down.svg" alt=""></button>
+      <div class="tag_list"></div>
+    </div>
+  </nav>
+  <div class="header_functional container">
+    <nav class="header_menu">
+      <button class="btn btn-icon" type="button">
+        <img src="assets/img/menu-icon.svg" alt="Toggle Menu Icon" />
+      </button>
+      <ul class="menu">
+        <li class="menu_item">
+          <a href="info.html" class="btn menu_link">О проекте</a>
+        </li>
+        <li class="menu_item">
+          <a href="info.html" class="btn menu_link">Редакция</a>
+        </li>
+        <li class="menu_item">
+          <a href="info.html" class="btn menu_link">Контакты</a>
+        </li>
+      </ul>
     </nav>
-    <div class="header_functional container">
-      <nav class="header_menu">
-        <button class="btn btn-icon" type="button">
-          <img src="assets/img/menu-icon.svg" alt="Toggle Menu Icon" />
-        </button>
-        <ul class="menu">
-          <li class="menu_item">
-            <a href="info.html" class="btn menu_link">О проекте</a>
-          </li>
-          <li class="menu_item">
-            <a href="info.html" class="btn menu_link">Редакция</a>
-          </li>
-          <li class="menu_item">
-            <a href="info.html" class="btn menu_link">Контакты</a>
-          </li>
+    <div class="header_language">
+      <button class="btn btn-icon" type="button">
+        <img src="assets/img/language-icon.svg" alt="Toggle Menu Icon" />
+      </button>
+      <ul class="language">
+        <li class="language_item">
+          <button class="btn language_link" type="button">Русский</button>
+        </li>
+      </ul>
+    </div>
+    <div class="header_notification">
+      <button class="btn btn-icon" type="button">
+        <img src="assets/img/notifications-icon.svg" alt="Toggle Menu Icon" />
+      </button>
+      <div class="notification">
+        <p class="notification_empty">У вас пока нет непрочитанных уведомлений</p>
+        <ul class="notification_list">
+          <li class="notification_item">Notification #1</li>
+          <li class="notification_item">Notification #2</li>
+          <li class="notification_item">Notification #3</li>
         </ul>
-      </nav>
-      <div class="header_language">
-        <button class="btn btn-icon" type="button">
-          <img src="assets/img/language-icon.svg" alt="Toggle Menu Icon" />
-        </button>
-        <ul class="language">
-          <li class="language_item">
-            <button class="btn language_link" type="button">Русский</button>
-          </li>
-        </ul>
-      </div>
-      <div class="header_notification">
-        <button class="btn btn-icon" type="button">
-          <img src="assets/img/notifications-icon.svg" alt="Toggle Menu Icon" />
-        </button>
-        <div class="notification">
-          <p class="notification_empty">У вас пока нет непрочитанных уведомлений</p>
-          <ul class="notification_list">
-            <li class="notification_item">Notification #1</li>
-            <li class="notification_item">Notification #2</li>
-            <li class="notification_item">Notification #3</li>
-          </ul>
-        </div>
       </div>
     </div>
   </div>
