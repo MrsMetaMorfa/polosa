@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', function() {
           imageHeight = (itemWidth - 40) / 151 * 106;
         } else {
           imageHeight = (itemWidth - 40) / 53 * 76;
-          console.log(itemWidth);
         }
         Array.prototype.forEach.call(itemsOnPage, function(elem){
           let image = elem.querySelector('.item_image');
@@ -60,7 +59,9 @@ document.addEventListener('DOMContentLoaded', function() {
       let ToggleMenu = function() {
         block.classList.toggle('open');
       };
-      button.onclick = () => (new ToggleMenu());
+      if (button) {
+        button.onclick = () => (new ToggleMenu());
+      }
     }
 
     if (document.querySelector('.header_tags')) {
@@ -114,50 +115,104 @@ document.addEventListener('DOMContentLoaded', function() {
       tagNav.style.flexWrap = 'nowrap';
     }
 
-    if (document.querySelector('.header_tags')) {
-      const menuWrapper = document.querySelector('.header_menu'),
-            menu = menuWrapper.querySelector('.menu'),
-            menuButton = menuWrapper.querySelector('.btn-icon');
+    if (
+      document.querySelector('.header_tags') ||
+      document.querySelector('.header_menu') ||
+      document.querySelector('.header_notification') ||
+      document.querySelector('.header_language') ||
+      document.querySelector('.article .share')
+    ) {
+      let menuWrapper, menu, menuButton;
+      if (document.querySelector('.header_menu')) {
+        menuWrapper = document.querySelector('.header_menu');
+        menu = menuWrapper.querySelector('.menu');
+        menuButton = menuWrapper.querySelector('.btn-icon');
+      }
       new ToggleBlock(menu, menuButton);
-      const languageWrapper = document.querySelector('.header_language'),
-            language = languageWrapper.querySelector('.language'),
-            languageButton = languageWrapper.querySelector('.btn-icon');
+
+      let languageWrapper, language, languageButton;
+      if (document.querySelector('.header_language')) {
+        languageWrapper = document.querySelector('.header_language');
+        language = languageWrapper.querySelector('.language');
+        languageButton = languageWrapper.querySelector('.btn-icon');
+      }
       new ToggleBlock(language, languageButton);
-      const notificationWrapper = document.querySelector('.header_notification'),
-            notification = notificationWrapper.querySelector('.notification'),
-            notificationButton = notificationWrapper.querySelector('.btn-icon');
+
+      let notificationWrapper, notification, notificationButton;
+      if (document.querySelector('.header_notification')) {
+        notificationWrapper = document.querySelector('.header_notification');
+        notification = notificationWrapper.querySelector('.notification');
+        notificationButton = notificationWrapper.querySelector('.btn-icon');
+      }
       new ToggleBlock(notification, notificationButton);
-      const navWrapper = document.querySelector('.header_tags .tag-wrapper'),
-        navList = navWrapper.querySelector('.tag_list'),
+
+      let navWrapper, navList, navButton;
+      if (document.querySelector('.header_tags')) {
+        navWrapper = document.querySelector('.header_tags .tag-wrapper');
+        navList = navWrapper.querySelector('.tag_list');
         navButton = navWrapper.querySelector('.tag-button');
+      }
       new ToggleBlock(navList, navButton);
 
-      document.onclick = (e) => {
-        let target = e.target,
-          itsMenu = target === menu || menu.contains(target),
-          itsMenuButton = target === menuButton,
-          menuIsActive = menu.classList.contains('open'),
-          itsLanguage = target === language || language.contains(target),
-          itsLanguageButton = target === languageButton,
-          languageIsActive = language.classList.contains('open'),
-          itsNotification = target === notification || notification.contains(target),
-          itsNotificationButton = target === notificationButton,
-          notificationIsActive = notification.classList.contains('open'),
-          itsList = target === navList || navList.contains(target),
-          itsListButton = target === navButton,
-          listIsActive = navList.classList.contains('open');
+      let shareWrapper, shareList, shareButton;
+      if (document.querySelector('.article .share')) {
+        shareWrapper = document.querySelector('.article .share');
+        shareList = shareWrapper.querySelector('.share_list');
+        shareButton = shareWrapper.querySelector('.share_button');
+      }
+      new ToggleBlock(shareList, shareButton);
 
-        if (!itsMenu && !itsMenuButton && menuIsActive) {
+      document.onclick = (e) => {
+        let target = e.target;
+        let itsMenu, itsMenuButton, menuIsActive;
+        if (document.querySelector('.header_menu')) {
+            itsMenu = target === menu || menu.contains(target);
+            itsMenuButton = target === menuButton;
+            menuIsActive = menu.classList.contains('open');
+        }
+
+        let itsLanguage, itsLanguageButton, languageIsActive;
+        if (document.querySelector('.header_language')) {
+          itsLanguage = target === language || language.contains(target);
+          itsLanguageButton = target === languageButton;
+          languageIsActive = language.classList.contains('open');
+        }
+
+        let itsNotification, itsNotificationButton, notificationIsActive;
+        if (document.querySelector('.header_notification')) {
+          itsNotification = target === notification || notification.contains(target);
+          itsNotificationButton = target === notificationButton;
+          notificationIsActive = notification.classList.contains('open');
+        }
+
+        let itsList, itsListButton, listIsActive;
+        if (document.querySelector('.header_tags')) {
+          itsList = target === navList || navList.contains(target);
+          itsListButton = target === navButton;
+          listIsActive = navList.classList.contains('open');
+        }
+
+        let itsShareList, itsShareListButton, shareListIsActive;
+        if (document.querySelector('.article .share')) {
+          itsShareList = target === shareList || shareList.contains(target);
+          itsShareListButton = target === shareButton;
+          shareListIsActive = shareList.classList.contains('open');
+        }
+
+        if (document.querySelector('.header_menu') && !itsMenu && !itsMenuButton && menuIsActive) {
           menu.classList.toggle('open');
         }
-        if (!itsLanguage && !itsLanguageButton && languageIsActive) {
+        if (document.querySelector('.header_language') && !itsLanguage && !itsLanguageButton && languageIsActive) {
           language.classList.toggle('open');
         }
-        if (!itsNotification && !itsNotificationButton && notificationIsActive) {
+        if (document.querySelector('.header_notification') && !itsNotification && !itsNotificationButton && notificationIsActive) {
           notification.classList.toggle('open');
         }
-        if (!itsList && !itsListButton && listIsActive) {
+        if (document.querySelector('.header_tags') && !itsList && !itsListButton && listIsActive) {
           navList.classList.toggle('open');
+        }
+        if (document.querySelector('.article .share') && !itsShareList && !itsShareListButton && shareListIsActive) {
+          shareList.classList.toggle('open');
         }
       };
     }
@@ -165,55 +220,81 @@ document.addEventListener('DOMContentLoaded', function() {
     let article = document.querySelector('.article'),
         articleImage = document.querySelector('.article_image');
     if (article) {
-      if ((window.innerWidth >= 1024) && (window.innerWidth > window.innerHeight)) {
+      document.querySelector('.article_image-picture').style.height = 'auto';
+      articleImage.style.width = 'auto';
+      if ((window.innerWidth > window.innerHeight) && (window.innerWidth > 1024)) {
         let picture = document.querySelector('.article_image-picture'),
           caption = document.querySelector('.article_image-caption'),
           pictureHeight, pictureWidth;
-        console.log(article.offsetWidth / 2, article.querySelector('.wrapper').offsetWidth, (articleImage.offsetHeight + 80) > window.innerHeight);
+        picture.style.height = 'auto';
         if (((article.offsetWidth / 2) < (article.querySelector('.wrapper').offsetWidth)) && (article.offsetWidth < 1100)) {
-          if ((articleImage.offsetHeight + 80) > window.innerHeight) {
-            picture.style.height = (articleImage.offsetHeight - caption.offsetHeight) + 'px';
+          if ((picture.offsetHeight + caption.offsetHeight + 80) > window.innerHeight) {
+            picture.querySelector('.vertical').style.display = 'none';
+            picture.querySelector('.horizontal').style.display = 'block';
+            pictureWidth = picture.offsetWidth;
+            pictureHeight = pictureWidth / 125 * 88;
+          } else {
+            picture.querySelector('.vertical').style.display = 'block';
+            picture.querySelector('.horizontal').style.display = 'none';
+            if ((articleImage.offsetHeight - caption.offsetHeight) !== 0) {
+              picture.style.height = (articleImage.offsetHeight - caption.offsetHeight) + 'px';
+            }
             pictureHeight = picture.offsetHeight;
             pictureWidth = pictureHeight / 153 * 102;
+          }
+          articleImage.style.width = pictureWidth + 'px';
+          if (pictureWidth > 256) {
+            document.querySelector('.article').style.paddingLeft = pictureWidth + 40 + 'px';
           } else {
-            pictureWidth = (article.offsetWidth / 2) - 120;
-            pictureHeight = pictureWidth / 102 * 153;
+            document.querySelector('.article').style.paddingLeft = 256 + 40 + 'px';
           }
-          articleImage.style.width = pictureWidth + 'px';
-          document.querySelector('.article').style.paddingLeft = pictureWidth + 40 + 'px';
         } else {
-          if ((articleImage.offsetHeight + 80) > window.innerHeight) {
-            picture.style.height = (articleImage.offsetHeight - caption.offsetHeight) + 'px';
+          if ((picture.offsetHeight + caption.offsetHeight + 80 + 40) >= window.innerHeight) {
+            picture.querySelector('.vertical').style.display = 'none';
+            picture.querySelector('.horizontal').style.display = 'block';
+            pictureWidth = picture.offsetWidth;
+            pictureHeight = pictureWidth / 125 * 88;
+          } else {
+            picture.querySelector('.vertical').style.display = 'block';
+            picture.querySelector('.horizontal').style.display = 'none';
+            pictureHeight = picture.offsetHeight;
+            pictureWidth = pictureHeight / 153 * 102;
           }
-          pictureHeight = picture.offsetHeight;
-          pictureWidth = pictureHeight / 153 * 102;
           articleImage.style.width = pictureWidth + 'px';
-          document.querySelector('.article').style.paddingLeft = pictureWidth + 40 + 'px';
+          if (pictureWidth > 256) {
+            document.querySelector('.article').style.paddingLeft = pictureWidth + 40 + 'px';
+          } else {
+            document.querySelector('.article').style.paddingLeft = 256 + 40 + 'px';
+          }
         }
         let currentPageYPosition = 0, bannersScroll = 0;
         document.onscroll = function () {
           if (document.querySelector('.article')) {
             let articleHeight = document.querySelector('section.article').offsetHeight,
               headerHeight = document.querySelector('.header').offsetHeight;
-
             let bannersContainer = document.querySelector('.banners_container'),
               bannersContainerHeight = bannersContainer.offsetHeight,
               bannersWrapperHeight = document.querySelector('.banners_wrapper').offsetHeight,
               contentHeight = document.querySelector('.content').offsetHeight,
-              blocksDifference = (contentHeight) / (bannersContainerHeight - bannersWrapperHeight + 48),
+              blocksDifference = (contentHeight) / (bannersContainerHeight - bannersWrapperHeight + 140),
               scrollDifference = pageYOffset - currentPageYPosition, bannersScrollNew;
             if ((bannersContainerHeight - bannersWrapperHeight) > 0) {
               bannersScrollNew = scrollDifference / blocksDifference;
               bannersScroll = bannersScroll + bannersScrollNew;
-              bannersContainer.style.transform = 'translateY(' + (bannersScroll * -1) + 'px)';
+              if ((bannersContainerHeight - bannersWrapperHeight) > bannersScroll) {
+                bannersContainer.style.transform = 'translateY(' + (bannersScroll  * -1) + 'px)';
+              } else if ((bannersContainerHeight - bannersWrapperHeight) <= bannersScroll) {
+                bannersContainer.style.transform = 'translateY(' + ((bannersContainerHeight - bannersWrapperHeight)  * -1) + 'px)';
+              } else if (bannersScroll < 0) {
+                bannersContainer.style.transform = 'translateY(' + 0 + 'px)';
+              }
             }
-
-            if ((pageYOffset > 40) && (pageYOffset < (articleHeight + headerHeight - articleImage.offsetHeight - 100))) {
+            if ((pageYOffset > 73) && (pageYOffset < (headerHeight + articleHeight - 80 - (articleImage.offsetHeight + 40)))) {
               articleImage.style.position = 'fixed';
               articleImage.style.top = '40px';
               articleImage.style.bottom = 'auto';
               articleImage.style.width = articleImage.offsetWidth + 'px';
-            } else if ((pageYOffset > 40) && (pageYOffset > (articleHeight + headerHeight - articleImage.offsetHeight - 100))) {
+            } else if ((pageYOffset > 73) && (pageYOffset >= (headerHeight + articleHeight - 80 - (articleImage.offsetHeight + 40)))) {
               articleImage.style.position = 'absolute';
               articleImage.style.top = 'auto';
               articleImage.style.bottom = '80px';
