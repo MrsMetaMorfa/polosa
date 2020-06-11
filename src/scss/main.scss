@@ -411,8 +411,6 @@ a {
       margin: 0;
       list-style-type: none;
     }
-  }
-  &_language, &_notification {
     .btn-icon {
       margin-left: 8px;
     }
@@ -483,6 +481,7 @@ a {
       display: inline-flex;
       &:first-child {
         margin-left: 0;
+        background: $color-gray6;
       }
       &-wrapper {
         width: auto;
@@ -492,7 +491,8 @@ a {
       &-button {
         white-space: nowrap;
         padding: 5px 16px;
-        line-height: 22px;
+        font-size: 18px;
+        line-height: 24px;
         background: transparent;
         margin: 0 0 0 6px;
         display: flex;
@@ -561,20 +561,24 @@ a {
 }
 .tag {
   white-space: nowrap;
-  padding: 5px 16px;
+  padding: 5px 14px;
   font-size: 18px;
   line-height: 24px;
   background: transparent;
   &.current {
     position: relative;
-    display: flex;
+    display: block;
+    padding-right: 44px;
     &:after {
       content: '';
       display: block;
-      width: 28px;
-      height: 28px;
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
-      margin: -3px -14px -3px 12px;
+      position: absolute;
+      top: 50%;
+      right: 2px;
+      transform: translateY(-50%);
       background: url("../img/Subtract.svg") no-repeat center / 100%;
     }
   }
@@ -620,7 +624,7 @@ a {
   }
 }
 .compilation {
-  padding: 29px 0 0;
+  padding: 28px 0 0;
   &_header {
     margin-bottom: 28px;
     align-items: baseline;
@@ -674,7 +678,7 @@ a {
     margin: 0 -20px;
     width: calc(100% + 40px);
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(245px, 1fr));
     .item {
       //width: calc(100% / 4);
       padding: 0 20px 40px;
@@ -730,13 +734,21 @@ a {
   }
 }
 .last {
-  padding: 0;
+  padding: 0 40px;
   border-bottom: 1px solid $color-gray5;
   .item {
     padding: 24px 40px;
-    align-items: flex-start;
+    align-items: center;
+    width: calc(100% / 3);
+    text-decoration: none;
     &:not(:last-of-type) {
       border-right: 1px solid $color-gray5;
+    }
+    &:first-of-type {
+      padding-left: 0;
+    }
+    &:last-of-type {
+      padding-right: 0;
     }
     &_image {
       width: 64px;
@@ -754,12 +766,24 @@ a {
     &_data {
       font-size: 14px;
       line-height: 18px;
+      opacity: 1;
       span {
         opacity: .5;
       }
       mark {
         background: transparent;
         color: $color-darkred;
+      }
+    }
+    &:hover, &:focus {
+      .item_image {
+        img {
+          transform: scale(1.05);
+          transition: transform .2s ease-in-out;
+        }
+      }
+      .item_title .btn {
+        text-decoration: underline;
       }
     }
   }
@@ -769,6 +793,21 @@ a {
 }
 .item {
   position: relative;
+  &_link {
+    display: block;
+    position: relative;
+    z-index: 1;
+    &:hover, &:focus {
+      .item_image img {
+        transform: scale(1.05);
+        transition: transform .2s ease-in-out;
+      }
+      .item_title .btn {
+        text-decoration: underline;
+        transition: text-decoration .3s ease-in-out;
+      }
+    }
+  }
   &_image {
     display: block;
     width: 100%;
@@ -782,15 +821,10 @@ a {
       background: $color-gray6;
       transition: transform .2s ease-in-out;
     }
-    &:hover, &:focus {
-      img {
-        transform: scale(1.05);
-        transition: transform .2s ease-in-out;
-      }
-    }
   }
   &_tags {
-    width: calc(100% - 40px);
+    max-width: calc(100% - 40px);
+    width: auto;
     flex-flow: wrap-reverse;
     align-items: flex-start;
     justify-content: flex-start;
@@ -798,11 +832,14 @@ a {
     transform: translateY(-100%);
     padding: 0 8px 8px 16px;
     top: 424px;
+    z-index: 10;
     .tag {
       margin-right: 8px;
       margin-bottom: 8px;
       font-size: 14px;
       line-height: 18px;
+      position: relative;
+      z-index: 100;
       &:not(:first-child) {
         margin-left: 0;
       }
@@ -815,10 +852,6 @@ a {
     margin-bottom: 8px;
     .btn {
       transition: text-decoration .3s ease-in-out;
-      &:hover, &:focus {
-        text-decoration: underline;
-        transition: text-decoration .3s ease-in-out;
-      }
     }
   }
   &_data {
@@ -858,8 +891,10 @@ a {
       height: 100%;
       max-height: 612px;
       background: $color-gray6;
+      overflow: hidden;
       img {
         height: 100%;
+        max-height: 100%;
         width: 100%;
         object-fit: cover;
       }
@@ -876,6 +911,7 @@ a {
         font-size: 14px;
         line-height: 18px;
         opacity: .5;
+        white-space: nowrap;
       }
     }
   }
@@ -1537,9 +1573,12 @@ a {
       border-bottom-color: $color-gray1;
     }
     .header {
-      .nav {
+      &_tags {
         .tag {
           background: transparent;
+          &:first-child {
+            background: $color-gray1;
+          }
           &-button {
             img {
               filter: invert(1);

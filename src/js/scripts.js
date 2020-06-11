@@ -168,8 +168,8 @@ document.addEventListener('DOMContentLoaded', function() {
         let picture = document.querySelector('.article_image-picture'),
           caption = document.querySelector('.article_image-caption'),
           pictureHeight, pictureWidth;
-        console.log(article.offsetWidth, article.querySelector('.wrapper').offsetWidth);
-        if ((article.offsetWidth / 2) < (article.querySelector('.wrapper').offsetWidth)) {
+        console.log(article.offsetWidth / 2, article.querySelector('.wrapper').offsetWidth, (articleImage.offsetHeight + 80) > window.innerHeight);
+        if (((article.offsetWidth / 2) < (article.querySelector('.wrapper').offsetWidth)) && (article.offsetWidth < 1100)) {
           if ((articleImage.offsetHeight + 80) > window.innerHeight) {
             picture.style.height = (articleImage.offsetHeight - caption.offsetHeight) + 'px';
             pictureHeight = picture.offsetHeight;

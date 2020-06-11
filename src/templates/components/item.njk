@@ -1,22 +1,24 @@
 {% macro item(image, title, views, tags, isWide) %}
   <div class="item {{ 'wide' if isWide }}">
-    <a href="article.html" class="btn item_image">
-      <img src="{{ image }}" alt="{{ title }}">
-    </a>
     <div class="item_tags container">
       {% if tags %}
         {% for tag in tags %}
-          <button type="button"
-                  class="btn btn-default tag {{ tag.color }} {{ 'color-white' if tag.whiteText }} {{ 'color-dark' if tag.darkText }}"
-                  id="">
+          <a href="inner.html"
+            class="btn btn-default tag {{ tag.color }} {{ 'color-white' if tag.whiteText }} {{ 'color-dark' if tag.darkText }}"
+            id="">
             {{ tag.title }}
-          </button>
+          </a>
         {% endfor %}
       {% endif %}
     </div>
-    <h3 class="item_title">
-      <a href="article.html" class="btn">{{ title }}</a>
-    </h3>
+    <a href="article.html" class="btn item_link">
+      <span class="btn item_image">
+        <img src="{{ image }}" alt="{{ title }}">
+      </span>
+      <h3 class="item_title">
+        <span class="btn">{{ title }}</span>
+      </h3>
+    </a>
     <p class="item_data">{{ views }}</p>
   </div>
 {% endmacro %}
