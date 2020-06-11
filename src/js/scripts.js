@@ -15,6 +15,7 @@ document.addEventListener('DOMContentLoaded', function() {
   }
 
   function StartScripts() {
+    console.log((window.innerWidth >= 1024), (window.innerWidth > window.innerHeight));
 
     if (document.querySelector('.compilation')) {
       let itemsOnPage = document.querySelectorAll('.compilation .item'), itemWidth, imageHeight, itemTags;
@@ -160,53 +161,73 @@ document.addEventListener('DOMContentLoaded', function() {
       };
     }
 
-    let articleImage = document.querySelector('.article_image');
-    if (document.querySelector('.article')) {
+    let article = document.querySelector('.article'),
+        articleImage = document.querySelector('.article_image');
+    if (article) {
       if ((window.innerWidth >= 1024) && (window.innerWidth > window.innerHeight)) {
         let picture = document.querySelector('.article_image-picture'),
-          pictureHeight = picture.offsetHeight, pictureWidth;
-        pictureWidth = pictureHeight / 153 * 102;
-        articleImage.style.width = pictureWidth + 'px';
-        document.querySelector('.article').style.paddingLeft = pictureWidth + 40 + 'px';
-      }
-      let currentPageYPosition = 0, bannersScroll = 0;
-      document.onscroll = function () {
-        if (document.querySelector('.article')) {
-          let articleHeight = document.querySelector('section.article').offsetHeight,
-            headerHeight = document.querySelector('.header').offsetHeight;
-
-          let bannersContainer = document.querySelector('.banners_container'),
-            bannersContainerHeight = bannersContainer.offsetHeight,
-            bannersWrapperHeight = document.querySelector('.banners_wrapper').offsetHeight,
-            contentHeight = document.querySelector('.content').offsetHeight,
-            blocksDifference = (contentHeight) / (bannersContainerHeight - bannersWrapperHeight + 48),
-            scrollDifference = pageYOffset - currentPageYPosition, bannersScrollNew;
-          if ((bannersContainerHeight - bannersWrapperHeight) > 0) {
-            bannersScrollNew = scrollDifference / blocksDifference;
-            bannersScroll = bannersScroll + bannersScrollNew;
-            bannersContainer.style.transform = 'translateY(' + (bannersScroll * -1) + 'px)';
-          }
-
-          if ((pageYOffset > 40) && (pageYOffset < (articleHeight + headerHeight - articleImage.offsetHeight - 100))) {
-            articleImage.style.position = 'fixed';
-            articleImage.style.top = '40px';
-            articleImage.style.bottom = 'auto';
-            articleImage.style.width = articleImage.offsetWidth + 'px';
-          } else if ((pageYOffset > 40) && (pageYOffset > (articleHeight + headerHeight - articleImage.offsetHeight - 100))) {
-            articleImage.style.position = 'absolute';
-            articleImage.style.top = 'auto';
-            articleImage.style.bottom = '80px';
-            articleImage.style.width = articleImage.offsetWidth + 'px';
+          caption = document.querySelector('.article_image-caption'),
+          pictureHeight, pictureWidth;
+        console.log(article.offsetWidth, article.querySelector('.wrapper').offsetWidth);
+        if ((article.offsetWidth / 2) < (article.querySelector('.wrapper').offsetWidth)) {
+          if ((articleImage.offsetHeight + 80) > window.innerHeight) {
+            picture.style.height = (articleImage.offsetHeight - caption.offsetHeight) + 'px';
+            pictureHeight = picture.offsetHeight;
+            pictureWidth = pictureHeight / 153 * 102;
           } else {
-            articleImage.style.position = 'absolute';
-            articleImage.style.top = '40px';
-            articleImage.style.bottom = 'auto';
-            articleImage.style.width = articleImage.offsetWidth + 'px';
+            pictureWidth = (article.offsetWidth / 2) - 80;
+            pictureHeight = pictureWidth / 102 * 153;
           }
-
-          currentPageYPosition = pageYOffset;
+          articleImage.style.width = pictureWidth + 'px';
+          document.querySelector('.article').style.paddingLeft = pictureWidth + 40 + 'px';
+        } else {
+          if ((articleImage.offsetHeight + 80) > window.innerHeight) {
+            picture.style.height = (articleImage.offsetHeight - caption.offsetHeight) + 'px';
+          }
+          pictureHeight = picture.offsetHeight;
+          pictureWidth = pictureHeight / 153 * 102;
+          articleImage.style.width = pictureWidth + 'px';
+          document.querySelector('.article').style.paddingLeft = pictureWidth + 40 + 'px';
         }
-      };
+        let currentPageYPosition = 0, bannersScroll = 0;
+        document.onscroll = function () {
+          if (document.querySelector('.article')) {
+            let articleHeight = document.querySelector('section.article').offsetHeight,
+              headerHeight = document.querySelector('.header').offsetHeight;
+
+            let bannersContainer = document.querySelector('.banners_container'),
+              bannersContainerHeight = bannersContainer.offsetHeight,
+              bannersWrapperHeight = document.querySelector('.banners_wrapper').offsetHeight,
+              contentHeight = document.querySelector('.content').offsetHeight,
+              blocksDifference = (contentHeight) / (bannersContainerHeight - bannersWrapperHeight + 48),
+              scrollDifference = pageYOffset - currentPageYPosition, bannersScrollNew;
+            if ((bannersContainerHeight - bannersWrapperHeight) > 0) {
+              bannersScrollNew = scrollDifference / blocksDifference;
+              bannersScroll = bannersScroll + bannersScrollNew;
+              bannersContainer.style.transform = 'translateY(' + (bannersScroll * -1) + 'px)';
+            }
+
+            if ((pageYOffset > 40) && (pageYOffset < (articleHeight + headerHeight - articleImage.offsetHeight - 100))) {
+              articleImage.style.position = 'fixed';
+              articleImage.style.top = '40px';
+              articleImage.style.bottom = 'auto';
+              articleImage.style.width = articleImage.offsetWidth + 'px';
+            } else if ((pageYOffset > 40) && (pageYOffset > (articleHeight + headerHeight - articleImage.offsetHeight - 100))) {
+              articleImage.style.position = 'absolute';
+              articleImage.style.top = 'auto';
+              articleImage.style.bottom = '80px';
+              articleImage.style.width = articleImage.offsetWidth + 'px';
+            } else {
+              articleImage.style.position = 'absolute';
+              articleImage.style.top = '40px';
+              articleImage.style.bottom = 'auto';
+              articleImage.style.width = articleImage.offsetWidth + 'px';
+            }
+
+            currentPageYPosition = pageYOffset;
+          }
+        };
+      }
     }
   }
 

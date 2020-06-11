@@ -389,7 +389,7 @@ a {
   position: relative;
   justify-content: space-between;
   align-items: center;
-  padding: 24px 40px;
+  padding: 32px 40px;
   border-bottom: 1px solid $color-gray5;
   flex-wrap: wrap;
   &_logo {
@@ -473,13 +473,13 @@ a {
   &_tags {
     width: 50%;
     margin: 0 auto;
-    padding: 12px 0 0;
+    padding: 0;
     align-items: center;
     justify-content: center;
     flex-wrap: wrap;
     position: relative;
     .tag {
-      margin: 0 6px 12px;
+      margin: 0 6px 0;
       display: inline-flex;
       &:first-child {
         margin-left: 0;
@@ -494,7 +494,7 @@ a {
         padding: 5px 16px;
         line-height: 22px;
         background: transparent;
-        margin: 0 0 12px 6px;
+        margin: 0 0 0 6px;
         display: flex;
         align-items: center;
         img {
@@ -505,7 +505,7 @@ a {
       }
       &_list {
         position: absolute;
-        top: calc(100% - 8px);
+        top: calc(100% + 4px);
         right: 0;
         margin: 0;
         padding: 0;
@@ -562,7 +562,8 @@ a {
 .tag {
   white-space: nowrap;
   padding: 5px 16px;
-  line-height: 22px;
+  font-size: 18px;
+  line-height: 24px;
   background: transparent;
   &.current {
     position: relative;
@@ -589,6 +590,7 @@ a {
   }
   &_logo {
     margin-bottom: 40px;
+    height: 32px;
   }
   &_about {
     font-size: 16px;
@@ -611,14 +613,14 @@ a {
     .nav_link {
       margin: 0 0 8px;
       white-space: nowrap;
+      font-size: 16px;
+      line-height: 22px;
+      padding: 5px 12px;
     }
   }
 }
 .compilation {
   padding: 29px 0 0;
-  &.today {
-    padding-top: 40px;
-  }
   &_header {
     margin-bottom: 28px;
     align-items: baseline;
@@ -728,7 +730,7 @@ a {
   }
 }
 .last {
-  padding: 0 40px;
+  padding: 0;
   border-bottom: 1px solid $color-gray5;
   .item {
     padding: 24px 40px;
@@ -761,13 +763,16 @@ a {
       }
     }
   }
+  + .compilation {
+    padding-top: 40px;
+  }
 }
 .item {
   position: relative;
   &_image {
     display: block;
     width: 100%;
-    margin-bottom: 16px;
+    margin-bottom: 12px;
     overflow: hidden;
     height: 424px;
     img {
@@ -796,7 +801,8 @@ a {
     .tag {
       margin-right: 8px;
       margin-bottom: 8px;
-      line-height: 22px;
+      font-size: 14px;
+      line-height: 18px;
       &:not(:first-child) {
         margin-left: 0;
       }
@@ -835,7 +841,7 @@ a {
   position: relative;
   width: 100%;
   margin: 0 auto;
-  padding: 40px 0 80px calc(100% / 3 + 40px);
+  padding: 40px 0 80px calc(100% - 640px - 80px);
   display: flex;
   border-bottom: 1px solid $color-gray5;
   &_image {
@@ -860,8 +866,6 @@ a {
     }
     &-caption {
       color: $color-white;
-      font-size: 14px;
-      line-height: 18px;
       &.dark {
         color: $color-black;
       }
@@ -869,6 +873,8 @@ a {
         border-bottom: 1px solid $color-gray5;
         padding: 9px 0;
         margin: 0;
+        font-size: 14px;
+        line-height: 18px;
         opacity: .5;
       }
     }
@@ -1039,7 +1045,7 @@ a {
   top: 0;
   right: 0;
   bottom: 0;
-  width: 25%;
+  width: 24%;
   border-left: 1px solid $color-gray5;
   padding: 40px;
   display: flex;
@@ -1056,9 +1062,13 @@ a {
     &:not(:last-of-type) {
       margin-bottom: 6px;
     }
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
   + .content-wrapper {
-    padding-right: 25%;
+    padding-right: 24%;
     padding-left: 0;
   }
 }
@@ -1081,8 +1091,8 @@ a {
     }
   }
   &_body {
-    font-size: 20px;
-    line-height: 26px;
+    font-size: 18px;
+    line-height: 23px;
     p {
       margin-bottom: 16px;
     }
@@ -1095,11 +1105,12 @@ a {
       }
       p {
         opacity: .5;
-        margin-bottom: 16px;
+        margin-bottom: 20px;
       }
     }
     footer {
       opacity: .5;
+      padding-bottom: 12px;
     }
   }
 }
@@ -1134,36 +1145,36 @@ a {
   }
 }
 
-@media screen and (max-width: 1024px) and (orientation: landscape) {
-  .compilation_header {
-    flex-wrap: wrap;
-  }
-  .article {
-    &_image {
-      width: 40%;
-      max-width: 40%;
-    }
-    &_body {
-      padding: 0 48px 50px calc(100vh / 212 * 141 + 48px);
-    }
-    .header {
-      width: 100%;
-    }
-  }
-  .footer {
-    width: 100%;
-    margin: 0 auto;
-    padding: 40px 0;
-
-    &_info, &_nav {
-      width: 100%;
-      font-size: 75%;
-    }
-    &_nav {
-      margin-bottom: 16px;
-    }
-  }
-}
+//@media screen and (max-width: 1024px) and (orientation: landscape) {
+//  .compilation_header {
+//    flex-wrap: wrap;
+//  }
+//  .article {
+//    &_image {
+//      width: 40%;
+//      max-width: 40%;
+//    }
+//    &_body {
+//      padding: 0 48px 50px calc(100vh / 212 * 141 + 48px);
+//    }
+//    .header {
+//      width: 100%;
+//    }
+//  }
+//  .footer {
+//    width: 100%;
+//    margin: 0 auto;
+//    padding: 40px 0;
+//
+//    &_info, &_nav {
+//      width: 100%;
+//      font-size: 75%;
+//    }
+//    &_nav {
+//      margin-bottom: 16px;
+//    }
+//  }
+//}
 
 @media screen and (max-width: 1024px) and (orientation: portrait) {
   body {
@@ -1176,6 +1187,7 @@ a {
     padding: 24px 16px;
   }
   .article {
+    overflow-x: hidden;
     &_image {
       position: absolute;
       width: 100%;
@@ -1189,6 +1201,7 @@ a {
     }
     &_body {
       position: static;
+      width: 100%;
     }
     &_title {
       padding-top: 16px;
@@ -1372,9 +1385,6 @@ a {
     border-bottom: none;
     .wrapper {
       padding: 0;
-    }
-    &_body {
-      overflow-x: hidden;
     }
     &_image {
       position: static!important;
@@ -1595,6 +1605,9 @@ a {
       }
       &_content {
         figure {
+          picture {
+            background: $color-gray1;
+          }
           img {
             background: $color-gray1;
           }
