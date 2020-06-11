@@ -31,7 +31,8 @@ document.addEventListener('DOMContentLoaded', function() {
         if (itemsOnPage[0].classList.contains('wide')) {
           imageHeight = (itemWidth - 40) / 151 * 106;
         } else {
-          imageHeight = (itemWidth - 40) / 76 * 53;
+          imageHeight = (itemWidth - 40) / 53 * 76;
+          console.log(itemWidth);
         }
         Array.prototype.forEach.call(itemsOnPage, function(elem){
           let image = elem.querySelector('.item_image');
@@ -175,7 +176,7 @@ document.addEventListener('DOMContentLoaded', function() {
             pictureHeight = picture.offsetHeight;
             pictureWidth = pictureHeight / 153 * 102;
           } else {
-            pictureWidth = (article.offsetWidth / 2) - 80;
+            pictureWidth = (article.offsetWidth / 2) - 120;
             pictureHeight = pictureWidth / 102 * 153;
           }
           articleImage.style.width = pictureWidth + 'px';
@@ -227,6 +228,8 @@ document.addEventListener('DOMContentLoaded', function() {
             currentPageYPosition = pageYOffset;
           }
         };
+      } else {
+        document.querySelector('.article').style.paddingLeft = '16px';
       }
     }
   }
